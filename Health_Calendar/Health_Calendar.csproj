@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6AF02680-8F5E-4533-805A-FDDD72BB477B}</ProjectGuid>
+    <ProjectGuid>{32458284-41D1-42FE-9720-A4EC9847BBC1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Health_Calendar</RootNamespace>
