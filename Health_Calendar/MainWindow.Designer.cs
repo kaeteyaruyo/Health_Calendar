@@ -34,12 +34,12 @@
             this.calendarPage = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label52 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.recordViewPage = new System.Windows.Forms.TabPage();
             this.recordViewPanel = new System.Windows.Forms.Panel();
             this.BMIViewLabel = new System.Windows.Forms.Label();
@@ -68,43 +68,36 @@
             this.DBPEditLabel = new System.Windows.Forms.Label();
             this.weightEditLabel = new System.Windows.Forms.Label();
             this.SBPEditLabel = new System.Windows.Forms.Label();
-            this.BPLabel = new System.Windows.Forms.Label();
             this.summaryPage = new System.Windows.Forms.TabPage();
             this.settingsPage = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label40 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.settingPanel = new System.Windows.Forms.Panel();
+            this.settingExerciseTitleLabel = new System.Windows.Forms.Label();
+            this.PermissionPanel = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.MinuteSetCombo = new System.Windows.Forms.ComboBox();
+            this.HourSetCombo = new System.Windows.Forms.ComboBox();
+            this.TimeSetLabel = new System.Windows.Forms.Label();
+            this.OlderText = new System.Windows.Forms.TextBox();
+            this.HeightText = new System.Windows.Forms.TextBox();
+            this.StartDateCombo = new System.Windows.Forms.ComboBox();
+            this.PermissionLabel = new System.Windows.Forms.Label();
+            this.yearLabel = new System.Windows.Forms.Label();
+            this.mLabel = new System.Windows.Forms.Label();
+            this.OlderLabel = new System.Windows.Forms.Label();
+            this.HeightLabel = new System.Windows.Forms.Label();
+            this.StartDateLabel = new System.Windows.Forms.Label();
+            this.addSettingExerciseButton = new System.Windows.Forms.Button();
+            this.YesradioButton = new System.Windows.Forms.RadioButton();
+            this.NoradioButton = new System.Windows.Forms.RadioButton();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.CheckSettingbutton = new System.Windows.Forms.Button();
+            this.updateRecordButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cancelRecordButton = new System.Windows.Forms.Button();
+            this.addDietRecordButton = new System.Windows.Forms.Button();
+            this.BackViewButton = new System.Windows.Forms.Button();
+            this.EditViewButton = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.mainPage.SuspendLayout();
             this.calendarTabControl.SuspendLayout();
@@ -115,10 +108,8 @@
             this.recordEditPage.SuspendLayout();
             this.panel1.SuspendLayout();
             this.settingsPage.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.settingPanel.SuspendLayout();
+            this.PermissionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
@@ -128,22 +119,22 @@
             this.mainTabControl.Controls.Add(this.summaryPage);
             this.mainTabControl.Controls.Add(this.settingsPage);
             this.mainTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.mainTabControl.Location = new System.Drawing.Point(58, 41);
+            this.mainTabControl.Location = new System.Drawing.Point(65, 49);
             this.mainTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1025, 469);
+            this.mainTabControl.Size = new System.Drawing.Size(1153, 563);
             this.mainTabControl.TabIndex = 0;
             // 
             // mainPage
             // 
             this.mainPage.Controls.Add(this.calendarTabControl);
-            this.mainPage.Location = new System.Drawing.Point(26, 4);
+            this.mainPage.Location = new System.Drawing.Point(28, 4);
             this.mainPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainPage.Name = "mainPage";
             this.mainPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mainPage.Size = new System.Drawing.Size(995, 461);
+            this.mainPage.Size = new System.Drawing.Size(1121, 555);
             this.mainPage.TabIndex = 0;
             this.mainPage.Text = "月曆";
             this.mainPage.UseVisualStyleBackColor = true;
@@ -153,126 +144,128 @@
             this.calendarTabControl.Controls.Add(this.calendarPage);
             this.calendarTabControl.Controls.Add(this.recordViewPage);
             this.calendarTabControl.Controls.Add(this.recordEditPage);
-            this.calendarTabControl.Location = new System.Drawing.Point(5, 10);
+            this.calendarTabControl.Location = new System.Drawing.Point(6, 12);
             this.calendarTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.calendarTabControl.Name = "calendarTabControl";
             this.calendarTabControl.SelectedIndex = 0;
-            this.calendarTabControl.Size = new System.Drawing.Size(631, 372);
+            this.calendarTabControl.Size = new System.Drawing.Size(984, 446);
             this.calendarTabControl.TabIndex = 0;
             // 
             // calendarPage
             // 
             this.calendarPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b7;
             this.calendarPage.Controls.Add(this.panel8);
-            this.calendarPage.Location = new System.Drawing.Point(4, 25);
+            this.calendarPage.Controls.Add(this.label57);
+            this.calendarPage.Location = new System.Drawing.Point(4, 28);
             this.calendarPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.calendarPage.Name = "calendarPage";
             this.calendarPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.calendarPage.Size = new System.Drawing.Size(623, 343);
+            this.calendarPage.Size = new System.Drawing.Size(976, 414);
             this.calendarPage.TabIndex = 2;
             this.calendarPage.UseVisualStyleBackColor = true;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label52);
-            this.panel8.Controls.Add(this.label57);
             this.panel8.Controls.Add(this.label53);
             this.panel8.Controls.Add(this.label54);
             this.panel8.Controls.Add(this.label55);
             this.panel8.Controls.Add(this.label56);
             this.panel8.Controls.Add(this.label51);
-            this.panel8.Location = new System.Drawing.Point(5, 5);
+            this.panel8.Location = new System.Drawing.Point(6, 6);
             this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(613, 49);
+            this.panel8.Size = new System.Drawing.Size(840, 59);
             this.panel8.TabIndex = 0;
             // 
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label52.Location = new System.Drawing.Point(457, 13);
+            this.label52.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label52.Location = new System.Drawing.Point(757, 16);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(42, 20);
+            this.label52.Size = new System.Drawing.Size(80, 40);
             this.label52.TabIndex = 2;
             this.label52.Text = "FRI";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label57.Location = new System.Drawing.Point(538, 13);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(42, 20);
-            this.label57.TabIndex = 3;
-            this.label57.Text = "SAT";
             // 
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label53.Location = new System.Drawing.Point(380, 13);
+            this.label53.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label53.Location = new System.Drawing.Point(622, 16);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(42, 20);
+            this.label53.Size = new System.Drawing.Size(80, 40);
             this.label53.TabIndex = 3;
             this.label53.Text = "THU";
             // 
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label54.Location = new System.Drawing.Point(292, 13);
+            this.label54.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label54.Location = new System.Drawing.Point(493, 16);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(42, 20);
+            this.label54.Size = new System.Drawing.Size(80, 40);
             this.label54.TabIndex = 4;
             this.label54.Text = "WED";
             // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label55.Location = new System.Drawing.Point(197, 13);
+            this.label55.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label55.Location = new System.Drawing.Point(357, 16);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(42, 20);
+            this.label55.Size = new System.Drawing.Size(80, 40);
             this.label55.TabIndex = 5;
             this.label55.Text = "TUE";
             // 
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label56.Location = new System.Drawing.Point(111, 13);
+            this.label56.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label56.Location = new System.Drawing.Point(226, 16);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(42, 20);
+            this.label56.Size = new System.Drawing.Size(80, 40);
             this.label56.TabIndex = 6;
             this.label56.Text = "MON";
             // 
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("MingLiU-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label51.Location = new System.Drawing.Point(35, 13);
+            this.label51.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label51.Location = new System.Drawing.Point(90, 16);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(42, 20);
+            this.label51.Size = new System.Drawing.Size(80, 40);
             this.label51.TabIndex = 1;
             this.label51.Text = "SUN";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label57.Location = new System.Drawing.Point(890, 22);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(80, 40);
+            this.label57.TabIndex = 3;
+            this.label57.Text = "SAT";
             // 
             // recordViewPage
             // 
             this.recordViewPage.AutoScroll = true;
-            this.recordViewPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b3;
+            this.recordViewPage.BackgroundImage = global::Health_Calendar.Properties.Resources.date4;
             this.recordViewPage.Controls.Add(this.recordViewPanel);
-            this.recordViewPage.Location = new System.Drawing.Point(4, 25);
+            this.recordViewPage.Location = new System.Drawing.Point(4, 28);
             this.recordViewPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordViewPage.Name = "recordViewPage";
             this.recordViewPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.recordViewPage.Size = new System.Drawing.Size(623, 343);
+            this.recordViewPage.Size = new System.Drawing.Size(976, 414);
             this.recordViewPage.TabIndex = 1;
             this.recordViewPage.UseVisualStyleBackColor = true;
             // 
             // recordViewPanel
             // 
             this.recordViewPanel.AutoScroll = true;
+            this.recordViewPanel.Controls.Add(this.EditViewButton);
+            this.recordViewPanel.Controls.Add(this.BackViewButton);
             this.recordViewPanel.Controls.Add(this.BMIViewLabel);
             this.recordViewPanel.Controls.Add(this.targetViewLabel);
             this.recordViewPanel.Controls.Add(this.wasitlineViewLabel);
@@ -281,19 +274,20 @@
             this.recordViewPanel.Controls.Add(this.dateViewLabel);
             this.recordViewPanel.Controls.Add(this.label19);
             this.recordViewPanel.Controls.Add(this.weightViewLabel);
-            this.recordViewPanel.Location = new System.Drawing.Point(6, 4);
+            this.recordViewPanel.Location = new System.Drawing.Point(41, 36);
             this.recordViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordViewPanel.Name = "recordViewPanel";
-            this.recordViewPanel.Size = new System.Drawing.Size(590, 255);
+            this.recordViewPanel.Size = new System.Drawing.Size(810, 574);
             this.recordViewPanel.TabIndex = 1;
             // 
             // BMIViewLabel
             // 
             this.BMIViewLabel.AutoSize = true;
             this.BMIViewLabel.BackColor = System.Drawing.Color.Transparent;
-            this.BMIViewLabel.Location = new System.Drawing.Point(47, 105);
+            this.BMIViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.BMIViewLabel.Location = new System.Drawing.Point(56, 148);
             this.BMIViewLabel.Name = "BMIViewLabel";
-            this.BMIViewLabel.Size = new System.Drawing.Size(174, 15);
+            this.BMIViewLabel.Size = new System.Drawing.Size(424, 40);
             this.BMIViewLabel.TabIndex = 13;
             this.BMIViewLabel.Text = "BMI:XX  (標準/過胖/過瘦)";
             // 
@@ -301,82 +295,92 @@
             // 
             this.targetViewLabel.AutoSize = true;
             this.targetViewLabel.BackColor = System.Drawing.Color.Transparent;
-            this.targetViewLabel.Location = new System.Drawing.Point(231, 77);
+            this.targetViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.targetViewLabel.Location = new System.Drawing.Point(412, 83);
             this.targetViewLabel.Name = "targetViewLabel";
-            this.targetViewLabel.Size = new System.Drawing.Size(140, 15);
+            this.targetViewLabel.Size = new System.Drawing.Size(334, 40);
             this.targetViewLabel.TabIndex = 8;
             this.targetViewLabel.Text = "離目標還有XX kg喔!";
             // 
             // wasitlineViewLabel
             // 
             this.wasitlineViewLabel.AutoSize = true;
-            this.wasitlineViewLabel.Location = new System.Drawing.Point(50, 194);
+            this.wasitlineViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.wasitlineViewLabel.Location = new System.Drawing.Point(64, 320);
             this.wasitlineViewLabel.Name = "wasitlineViewLabel";
-            this.wasitlineViewLabel.Size = new System.Drawing.Size(110, 15);
+            this.wasitlineViewLabel.Size = new System.Drawing.Size(305, 40);
             this.wasitlineViewLabel.TabIndex = 7;
             this.wasitlineViewLabel.Text = "腰圍:             cm";
             // 
             // DBPViewLabel
             // 
             this.DBPViewLabel.AutoSize = true;
-            this.DBPViewLabel.Location = new System.Drawing.Point(50, 162);
+            this.DBPViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DBPViewLabel.Location = new System.Drawing.Point(56, 270);
             this.DBPViewLabel.Name = "DBPViewLabel";
-            this.DBPViewLabel.Size = new System.Drawing.Size(56, 15);
+            this.DBPViewLabel.Size = new System.Drawing.Size(144, 40);
             this.DBPViewLabel.TabIndex = 6;
             this.DBPViewLabel.Text = "舒張壓:";
             // 
             // SBPViewLabel
             // 
             this.SBPViewLabel.AutoSize = true;
-            this.SBPViewLabel.Location = new System.Drawing.Point(50, 140);
+            this.SBPViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.SBPViewLabel.Location = new System.Drawing.Point(56, 210);
             this.SBPViewLabel.Name = "SBPViewLabel";
-            this.SBPViewLabel.Size = new System.Drawing.Size(56, 15);
+            this.SBPViewLabel.Size = new System.Drawing.Size(144, 40);
             this.SBPViewLabel.TabIndex = 5;
             this.SBPViewLabel.Text = "收縮壓:";
             // 
             // dateViewLabel
             // 
             this.dateViewLabel.AutoSize = true;
-            this.dateViewLabel.Font = new System.Drawing.Font("DFKai-SB", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dateViewLabel.Location = new System.Drawing.Point(16, 15);
+            this.dateViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.dateViewLabel.Location = new System.Drawing.Point(64, 15);
             this.dateViewLabel.Name = "dateViewLabel";
-            this.dateViewLabel.Size = new System.Drawing.Size(73, 20);
+            this.dateViewLabel.Size = new System.Drawing.Size(127, 40);
             this.dateViewLabel.TabIndex = 3;
             this.dateViewLabel.Text = " 月 日";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(42, 69);
+            this.label19.Location = new System.Drawing.Point(47, 83);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(0, 15);
+            this.label19.Size = new System.Drawing.Size(0, 18);
             this.label19.TabIndex = 1;
             // 
             // weightViewLabel
             // 
             this.weightViewLabel.AutoSize = true;
-            this.weightViewLabel.Location = new System.Drawing.Point(47, 77);
+            this.weightViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.weightViewLabel.Location = new System.Drawing.Point(56, 83);
             this.weightViewLabel.Name = "weightViewLabel";
-            this.weightViewLabel.Size = new System.Drawing.Size(111, 15);
+            this.weightViewLabel.Size = new System.Drawing.Size(311, 40);
             this.weightViewLabel.TabIndex = 0;
             this.weightViewLabel.Text = "體重:              kg";
             // 
             // recordEditPage
             // 
             this.recordEditPage.AutoScroll = true;
-            this.recordEditPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b3;
             this.recordEditPage.Controls.Add(this.panel1);
-            this.recordEditPage.Location = new System.Drawing.Point(4, 25);
+            this.recordEditPage.Location = new System.Drawing.Point(4, 28);
             this.recordEditPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordEditPage.Name = "recordEditPage";
             this.recordEditPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.recordEditPage.Size = new System.Drawing.Size(623, 343);
+            this.recordEditPage.Size = new System.Drawing.Size(976, 414);
             this.recordEditPage.TabIndex = 0;
             this.recordEditPage.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.addDietRecordButton);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cancelRecordButton);
+            this.panel1.Controls.Add(this.exerciseCheckBox);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.updateRecordButton);
             this.panel1.Controls.Add(this.cmLabel);
             this.panel1.Controls.Add(this.kgLabel);
             this.panel1.Controls.Add(this.waistlineEditText);
@@ -386,60 +390,62 @@
             this.panel1.Controls.Add(this.DBPEditText);
             this.panel1.Controls.Add(this.SBPEditText);
             this.panel1.Controls.Add(this.dateEditLabel);
-            this.panel1.Controls.Add(this.exerciseCheckBox);
             this.panel1.Controls.Add(this.recordEditTitleLabel);
             this.panel1.Controls.Add(this.recordEditExerciseLabel);
             this.panel1.Controls.Add(this.waistlineEditLabel);
             this.panel1.Controls.Add(this.DBPEditLabel);
             this.panel1.Controls.Add(this.weightEditLabel);
             this.panel1.Controls.Add(this.SBPEditLabel);
-            this.panel1.Controls.Add(this.BPLabel);
             this.panel1.Location = new System.Drawing.Point(3, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 455);
+            this.panel1.Size = new System.Drawing.Size(786, 798);
             this.panel1.TabIndex = 14;
             // 
             // cmLabel
             // 
             this.cmLabel.AutoSize = true;
-            this.cmLabel.Location = new System.Drawing.Point(157, 176);
+            this.cmLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmLabel.Location = new System.Drawing.Point(366, 305);
             this.cmLabel.Name = "cmLabel";
-            this.cmLabel.Size = new System.Drawing.Size(24, 15);
+            this.cmLabel.Size = new System.Drawing.Size(43, 32);
             this.cmLabel.TabIndex = 25;
             this.cmLabel.Text = "cm";
             // 
             // kgLabel
             // 
             this.kgLabel.AutoSize = true;
-            this.kgLabel.Location = new System.Drawing.Point(159, 90);
+            this.kgLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.kgLabel.Location = new System.Drawing.Point(353, 144);
             this.kgLabel.Name = "kgLabel";
-            this.kgLabel.Size = new System.Drawing.Size(21, 15);
+            this.kgLabel.Size = new System.Drawing.Size(38, 36);
             this.kgLabel.TabIndex = 24;
             this.kgLabel.Text = "kg";
             // 
             // waistlineEditText
             // 
-            this.waistlineEditText.Location = new System.Drawing.Point(98, 167);
+            this.waistlineEditText.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.waistlineEditText.Location = new System.Drawing.Point(268, 299);
             this.waistlineEditText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.waistlineEditText.Name = "waistlineEditText";
-            this.waistlineEditText.Size = new System.Drawing.Size(55, 25);
+            this.waistlineEditText.Size = new System.Drawing.Size(82, 39);
             this.waistlineEditText.TabIndex = 23;
             // 
             // weightEditText
             // 
-            this.weightEditText.Location = new System.Drawing.Point(98, 87);
+            this.weightEditText.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.weightEditText.Location = new System.Drawing.Point(274, 137);
             this.weightEditText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.weightEditText.Name = "weightEditText";
-            this.weightEditText.Size = new System.Drawing.Size(55, 25);
+            this.weightEditText.Size = new System.Drawing.Size(61, 39);
             this.weightEditText.TabIndex = 22;
             // 
             // addDietButton
             // 
-            this.addDietButton.Location = new System.Drawing.Point(119, 416);
+            this.addDietButton.Location = new System.Drawing.Point(134, 499);
             this.addDietButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addDietButton.Name = "addDietButton";
-            this.addDietButton.Size = new System.Drawing.Size(67, 26);
+            this.addDietButton.Size = new System.Drawing.Size(75, 31);
             this.addDietButton.TabIndex = 18;
             this.addDietButton.Text = "新增";
             this.addDietButton.UseVisualStyleBackColor = true;
@@ -447,120 +453,117 @@
             // recordEditDietLabel
             // 
             this.recordEditDietLabel.AutoSize = true;
-            this.recordEditDietLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.recordEditDietLabel.Location = new System.Drawing.Point(15, 414);
+            this.recordEditDietLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.recordEditDietLabel.Location = new System.Drawing.Point(58, 608);
             this.recordEditDietLabel.Name = "recordEditDietLabel";
-            this.recordEditDietLabel.Size = new System.Drawing.Size(97, 25);
+            this.recordEditDietLabel.Size = new System.Drawing.Size(225, 48);
             this.recordEditDietLabel.TabIndex = 16;
             this.recordEditDietLabel.Text = "今日飲食:";
             // 
             // DBPEditText
             // 
-            this.DBPEditText.Location = new System.Drawing.Point(253, 139);
+            this.DBPEditText.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DBPEditText.Location = new System.Drawing.Point(309, 250);
             this.DBPEditText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DBPEditText.Name = "DBPEditText";
-            this.DBPEditText.Size = new System.Drawing.Size(89, 25);
+            this.DBPEditText.Size = new System.Drawing.Size(100, 39);
             this.DBPEditText.TabIndex = 15;
             // 
             // SBPEditText
             // 
-            this.SBPEditText.Location = new System.Drawing.Point(97, 139);
+            this.SBPEditText.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.SBPEditText.Location = new System.Drawing.Point(309, 196);
             this.SBPEditText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SBPEditText.Name = "SBPEditText";
-            this.SBPEditText.Size = new System.Drawing.Size(89, 25);
+            this.SBPEditText.Size = new System.Drawing.Size(100, 39);
             this.SBPEditText.TabIndex = 14;
             // 
             // dateEditLabel
             // 
             this.dateEditLabel.AutoSize = true;
-            this.dateEditLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dateEditLabel.Location = new System.Drawing.Point(15, 10);
+            this.dateEditLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.dateEditLabel.Location = new System.Drawing.Point(17, 12);
             this.dateEditLabel.Name = "dateEditLabel";
-            this.dateEditLabel.Size = new System.Drawing.Size(74, 25);
+            this.dateEditLabel.Size = new System.Drawing.Size(176, 56);
             this.dateEditLabel.TabIndex = 0;
             this.dateEditLabel.Text = "x年x日";
             // 
             // exerciseCheckBox
             // 
             this.exerciseCheckBox.FormattingEnabled = true;
-            this.exerciseCheckBox.Location = new System.Drawing.Point(30, 232);
+            this.exerciseCheckBox.Location = new System.Drawing.Point(83, 433);
             this.exerciseCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exerciseCheckBox.Name = "exerciseCheckBox";
-            this.exerciseCheckBox.Size = new System.Drawing.Size(472, 164);
+            this.exerciseCheckBox.Size = new System.Drawing.Size(530, 148);
             this.exerciseCheckBox.TabIndex = 13;
             // 
             // recordEditTitleLabel
             // 
             this.recordEditTitleLabel.AutoSize = true;
-            this.recordEditTitleLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.recordEditTitleLabel.Location = new System.Drawing.Point(15, 51);
+            this.recordEditTitleLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.recordEditTitleLabel.Location = new System.Drawing.Point(47, 77);
             this.recordEditTitleLabel.Name = "recordEditTitleLabel";
-            this.recordEditTitleLabel.Size = new System.Drawing.Size(97, 25);
+            this.recordEditTitleLabel.Size = new System.Drawing.Size(225, 48);
             this.recordEditTitleLabel.TabIndex = 2;
             this.recordEditTitleLabel.Text = "今日紀錄:";
             // 
             // recordEditExerciseLabel
             // 
             this.recordEditExerciseLabel.AutoSize = true;
-            this.recordEditExerciseLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.recordEditExerciseLabel.Location = new System.Drawing.Point(15, 204);
+            this.recordEditExerciseLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.recordEditExerciseLabel.Location = new System.Drawing.Point(58, 367);
             this.recordEditExerciseLabel.Name = "recordEditExerciseLabel";
-            this.recordEditExerciseLabel.Size = new System.Drawing.Size(97, 25);
+            this.recordEditExerciseLabel.Size = new System.Drawing.Size(225, 48);
             this.recordEditExerciseLabel.TabIndex = 3;
             this.recordEditExerciseLabel.Text = "今日運動:";
             // 
             // waistlineEditLabel
             // 
             this.waistlineEditLabel.AutoSize = true;
-            this.waistlineEditLabel.Location = new System.Drawing.Point(49, 175);
+            this.waistlineEditLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.waistlineEditLabel.Location = new System.Drawing.Point(155, 299);
             this.waistlineEditLabel.Name = "waistlineEditLabel";
-            this.waistlineEditLabel.Size = new System.Drawing.Size(41, 15);
+            this.waistlineEditLabel.Size = new System.Drawing.Size(107, 40);
             this.waistlineEditLabel.TabIndex = 9;
             this.waistlineEditLabel.Text = "腰圍:";
             // 
             // DBPEditLabel
             // 
             this.DBPEditLabel.AutoSize = true;
-            this.DBPEditLabel.Location = new System.Drawing.Point(204, 146);
+            this.DBPEditLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DBPEditLabel.Location = new System.Drawing.Point(155, 247);
             this.DBPEditLabel.Name = "DBPEditLabel";
-            this.DBPEditLabel.Size = new System.Drawing.Size(41, 15);
+            this.DBPEditLabel.Size = new System.Drawing.Size(148, 40);
             this.DBPEditLabel.TabIndex = 11;
-            this.DBPEditLabel.Text = "舒張:";
+            this.DBPEditLabel.Text = "舒張壓:";
             // 
             // weightEditLabel
             // 
             this.weightEditLabel.AutoSize = true;
-            this.weightEditLabel.Location = new System.Drawing.Point(49, 89);
+            this.weightEditLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.weightEditLabel.Location = new System.Drawing.Point(155, 140);
             this.weightEditLabel.Name = "weightEditLabel";
-            this.weightEditLabel.Size = new System.Drawing.Size(41, 15);
+            this.weightEditLabel.Size = new System.Drawing.Size(107, 40);
             this.weightEditLabel.TabIndex = 7;
             this.weightEditLabel.Text = "體重:";
             // 
             // SBPEditLabel
             // 
             this.SBPEditLabel.AutoSize = true;
-            this.SBPEditLabel.Location = new System.Drawing.Point(48, 146);
+            this.SBPEditLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.SBPEditLabel.Location = new System.Drawing.Point(155, 199);
             this.SBPEditLabel.Name = "SBPEditLabel";
-            this.SBPEditLabel.Size = new System.Drawing.Size(41, 15);
+            this.SBPEditLabel.Size = new System.Drawing.Size(148, 40);
             this.SBPEditLabel.TabIndex = 10;
-            this.SBPEditLabel.Text = "收縮:";
-            // 
-            // BPLabel
-            // 
-            this.BPLabel.AutoSize = true;
-            this.BPLabel.Location = new System.Drawing.Point(46, 119);
-            this.BPLabel.Name = "BPLabel";
-            this.BPLabel.Size = new System.Drawing.Size(41, 15);
-            this.BPLabel.TabIndex = 8;
-            this.BPLabel.Text = "血壓:";
+            this.SBPEditLabel.Text = "收縮壓:";
             // 
             // summaryPage
             // 
-            this.summaryPage.Location = new System.Drawing.Point(26, 4);
+            this.summaryPage.Location = new System.Drawing.Point(28, 4);
             this.summaryPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.summaryPage.Name = "summaryPage";
             this.summaryPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.summaryPage.Size = new System.Drawing.Size(995, 461);
+            this.summaryPage.Size = new System.Drawing.Size(1121, 555);
             this.summaryPage.TabIndex = 1;
             this.summaryPage.Text = "統計圖";
             this.summaryPage.UseVisualStyleBackColor = true;
@@ -568,232 +571,78 @@
             // settingsPage
             // 
             this.settingsPage.AutoScroll = true;
-            this.settingsPage.Controls.Add(this.panel4);
-            this.settingsPage.Location = new System.Drawing.Point(26, 4);
+            this.settingsPage.Controls.Add(this.settingPanel);
+            this.settingsPage.Location = new System.Drawing.Point(28, 4);
             this.settingsPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settingsPage.Name = "settingsPage";
-            this.settingsPage.Size = new System.Drawing.Size(995, 461);
+            this.settingsPage.Size = new System.Drawing.Size(1121, 555);
             this.settingsPage.TabIndex = 2;
             this.settingsPage.Text = "設定";
             this.settingsPage.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // settingPanel
             // 
-            this.panel4.BackgroundImage = global::Health_Calendar.Properties.Resources.b1;
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Controls.Add(this.label40);
-            this.panel4.Controls.Add(this.panel7);
-            this.panel4.Controls.Add(this.panel6);
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.checkBox2);
-            this.panel4.Controls.Add(this.checkBox1);
-            this.panel4.Controls.Add(this.textBox11);
-            this.panel4.Controls.Add(this.textBox8);
-            this.panel4.Controls.Add(this.comboBox2);
-            this.panel4.Controls.Add(this.label37);
-            this.panel4.Controls.Add(this.label36);
-            this.panel4.Controls.Add(this.label35);
-            this.panel4.Controls.Add(this.label34);
-            this.panel4.Controls.Add(this.label33);
-            this.panel4.Controls.Add(this.label22);
-            this.panel4.Location = new System.Drawing.Point(3, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(613, 589);
-            this.panel4.TabIndex = 1;
+            this.settingPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.settingPanel.Controls.Add(this.CheckSettingbutton);
+            this.settingPanel.Controls.Add(this.NoradioButton);
+            this.settingPanel.Controls.Add(this.YesradioButton);
+            this.settingPanel.Controls.Add(this.addSettingExerciseButton);
+            this.settingPanel.Controls.Add(this.StartDateLabel);
+            this.settingPanel.Controls.Add(this.settingExerciseTitleLabel);
+            this.settingPanel.Controls.Add(this.PermissionPanel);
+            this.settingPanel.Controls.Add(this.OlderText);
+            this.settingPanel.Controls.Add(this.HeightText);
+            this.settingPanel.Controls.Add(this.StartDateCombo);
+            this.settingPanel.Controls.Add(this.PermissionLabel);
+            this.settingPanel.Controls.Add(this.yearLabel);
+            this.settingPanel.Controls.Add(this.mLabel);
+            this.settingPanel.Controls.Add(this.OlderLabel);
+            this.settingPanel.Controls.Add(this.HeightLabel);
+            this.settingPanel.Location = new System.Drawing.Point(19, 24);
+            this.settingPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingPanel.Name = "settingPanel";
+            this.settingPanel.Size = new System.Drawing.Size(859, 732);
+            this.settingPanel.TabIndex = 1;
             // 
-            // label40
+            // settingExerciseTitleLabel
             // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.Transparent;
-            this.label40.Font = new System.Drawing.Font("DFKai-SB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label40.Location = new System.Drawing.Point(31, 302);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(104, 20);
-            this.label40.TabIndex = 14;
-            this.label40.Text = "運動項目:";
+            this.settingExerciseTitleLabel.AutoSize = true;
+            this.settingExerciseTitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.settingExerciseTitleLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.settingExerciseTitleLabel.Location = new System.Drawing.Point(134, 505);
+            this.settingExerciseTitleLabel.Name = "settingExerciseTitleLabel";
+            this.settingExerciseTitleLabel.Size = new System.Drawing.Size(262, 56);
+            this.settingExerciseTitleLabel.TabIndex = 14;
+            this.settingExerciseTitleLabel.Text = "運動項目:";
             // 
-            // panel7
+            // PermissionPanel
             // 
-            this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.Controls.Add(this.label49);
-            this.panel7.Controls.Add(this.label48);
-            this.panel7.Controls.Add(this.label47);
-            this.panel7.Controls.Add(this.label46);
-            this.panel7.Location = new System.Drawing.Point(332, 367);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(196, 134);
-            this.panel7.TabIndex = 13;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(12, 108);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(139, 15);
-            this.label49.TabIndex = 16;
-            this.label49.Text = "消耗卡路里:XXXkcal";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(12, 82);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(41, 15);
-            this.label48.TabIndex = 3;
-            this.label48.Text = "內容:";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(12, 49);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(87, 15);
-            this.label47.TabIndex = 2;
-            this.label47.Text = "時長:XX min";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(12, 16);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(71, 15);
-            this.label46.TabIndex = 1;
-            this.label46.Text = "名稱:XXX";
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Transparent;
-            this.panel6.Controls.Add(this.label50);
-            this.panel6.Controls.Add(this.label45);
-            this.panel6.Controls.Add(this.textBox15);
-            this.panel6.Controls.Add(this.textBox14);
-            this.panel6.Controls.Add(this.textBox13);
-            this.panel6.Controls.Add(this.textBox12);
-            this.panel6.Controls.Add(this.label44);
-            this.panel6.Controls.Add(this.label43);
-            this.panel6.Controls.Add(this.label42);
-            this.panel6.Controls.Add(this.label41);
-            this.panel6.Location = new System.Drawing.Point(32, 335);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(218, 192);
-            this.panel6.TabIndex = 12;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(169, 154);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(30, 15);
-            this.label50.TabIndex = 17;
-            this.label50.Text = "kcal";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(111, 57);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(29, 15);
-            this.label45.TabIndex = 20;
-            this.label45.Text = "min";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(23, 106);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox15.Multiline = true;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(152, 39);
-            this.textBox15.TabIndex = 19;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(102, 149);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(62, 25);
-            this.textBox14.TabIndex = 18;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(46, 49);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(62, 25);
-            this.textBox13.TabIndex = 17;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(46, 11);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(118, 25);
-            this.textBox12.TabIndex = 16;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(5, 152);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(86, 15);
-            this.label44.TabIndex = 15;
-            this.label44.Text = "消耗卡路里:";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(4, 82);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(41, 15);
-            this.label43.TabIndex = 2;
-            this.label43.Text = "內容:";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(4, 49);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(41, 15);
-            this.label42.TabIndex = 1;
-            this.label42.Text = "時長:";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(4, 13);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(41, 15);
-            this.label41.TabIndex = 0;
-            this.label41.Text = "名稱:";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Transparent;
-            this.panel5.Controls.Add(this.label39);
-            this.panel5.Controls.Add(this.comboBox4);
-            this.panel5.Controls.Add(this.comboBox3);
-            this.panel5.Controls.Add(this.label38);
-            this.panel5.Location = new System.Drawing.Point(75, 221);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(340, 69);
-            this.panel5.TabIndex = 11;
+            this.PermissionPanel.BackColor = System.Drawing.Color.Transparent;
+            this.PermissionPanel.Controls.Add(this.label39);
+            this.PermissionPanel.Controls.Add(this.MinuteSetCombo);
+            this.PermissionPanel.Controls.Add(this.HourSetCombo);
+            this.PermissionPanel.Controls.Add(this.TimeSetLabel);
+            this.PermissionPanel.Location = new System.Drawing.Point(252, 390);
+            this.PermissionPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PermissionPanel.Name = "PermissionPanel";
+            this.PermissionPanel.Size = new System.Drawing.Size(406, 76);
+            this.PermissionPanel.TabIndex = 11;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(121, 31);
+            this.label39.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label39.Location = new System.Drawing.Point(279, 13);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(11, 15);
+            this.label39.Size = new System.Drawing.Size(25, 40);
             this.label39.TabIndex = 12;
             this.label39.Text = ":";
             // 
-            // comboBox4
+            // MinuteSetCombo
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.MinuteSetCombo.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.MinuteSetCombo.FormattingEnabled = true;
+            this.MinuteSetCombo.Items.AddRange(new object[] {
             "00",
             "01",
             "02",
@@ -854,16 +703,17 @@
             "57",
             "58",
             "59"});
-            this.comboBox4.Location = new System.Drawing.Point(138, 28);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(42, 23);
-            this.comboBox4.TabIndex = 2;
+            this.MinuteSetCombo.Location = new System.Drawing.Point(310, 13);
+            this.MinuteSetCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinuteSetCombo.Name = "MinuteSetCombo";
+            this.MinuteSetCombo.Size = new System.Drawing.Size(72, 44);
+            this.MinuteSetCombo.TabIndex = 2;
             // 
-            // comboBox3
+            // HourSetCombo
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.HourSetCombo.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HourSetCombo.FormattingEnabled = true;
+            this.HourSetCombo.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -888,139 +738,235 @@
             "22",
             "23",
             "00"});
-            this.comboBox3.Location = new System.Drawing.Point(68, 28);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(48, 23);
-            this.comboBox3.TabIndex = 1;
+            this.HourSetCombo.Location = new System.Drawing.Point(203, 13);
+            this.HourSetCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HourSetCombo.Name = "HourSetCombo";
+            this.HourSetCombo.Size = new System.Drawing.Size(70, 44);
+            this.HourSetCombo.TabIndex = 1;
             // 
-            // label38
+            // TimeSetLabel
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(12, 11);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(71, 15);
-            this.label38.TabIndex = 0;
-            this.label38.Text = "提醒時間:";
+            this.TimeSetLabel.AutoSize = true;
+            this.TimeSetLabel.Font = new System.Drawing.Font("華康兒風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.TimeSetLabel.Location = new System.Drawing.Point(7, 17);
+            this.TimeSetLabel.Name = "TimeSetLabel";
+            this.TimeSetLabel.Size = new System.Drawing.Size(188, 40);
+            this.TimeSetLabel.TabIndex = 0;
+            this.TimeSetLabel.Text = "提醒時間:";
             // 
-            // checkBox2
+            // OlderText
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox2.Location = new System.Drawing.Point(143, 197);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(46, 19);
-            this.checkBox2.TabIndex = 10;
-            this.checkBox2.Text = "No";
-            this.checkBox2.UseVisualStyleBackColor = false;
+            this.OlderText.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.OlderText.Location = new System.Drawing.Point(292, 196);
+            this.OlderText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.OlderText.Name = "OlderText";
+            this.OlderText.Size = new System.Drawing.Size(100, 55);
+            this.OlderText.TabIndex = 8;
             // 
-            // checkBox1
+            // HeightText
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Location = new System.Drawing.Point(75, 197);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(50, 19);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Yes";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.HeightText.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HeightText.Location = new System.Drawing.Point(292, 121);
+            this.HeightText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HeightText.Name = "HeightText";
+            this.HeightText.Size = new System.Drawing.Size(100, 55);
+            this.HeightText.TabIndex = 7;
             // 
-            // textBox11
+            // StartDateCombo
             // 
-            this.textBox11.Location = new System.Drawing.Point(90, 117);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(89, 25);
-            this.textBox11.TabIndex = 8;
+            this.StartDateCombo.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.StartDateCombo.FormattingEnabled = true;
+            this.StartDateCombo.Location = new System.Drawing.Point(479, 51);
+            this.StartDateCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StartDateCombo.Name = "StartDateCombo";
+            this.StartDateCombo.Size = new System.Drawing.Size(77, 56);
+            this.StartDateCombo.TabIndex = 6;
             // 
-            // textBox8
+            // PermissionLabel
             // 
-            this.textBox8.Location = new System.Drawing.Point(90, 75);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(89, 25);
-            this.textBox8.TabIndex = 7;
+            this.PermissionLabel.AutoSize = true;
+            this.PermissionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.PermissionLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PermissionLabel.Location = new System.Drawing.Point(134, 266);
+            this.PermissionLabel.Name = "PermissionLabel";
+            this.PermissionLabel.Size = new System.Drawing.Size(500, 56);
+            this.PermissionLabel.TabIndex = 5;
+            this.PermissionLabel.Text = "是否發出推播通知?";
             // 
-            // comboBox2
+            // yearLabel
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(168, 45);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(40, 23);
-            this.comboBox2.TabIndex = 6;
+            this.yearLabel.AutoSize = true;
+            this.yearLabel.BackColor = System.Drawing.Color.Transparent;
+            this.yearLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.yearLabel.Location = new System.Drawing.Point(420, 204);
+            this.yearLabel.Name = "yearLabel";
+            this.yearLabel.Size = new System.Drawing.Size(65, 44);
+            this.yearLabel.TabIndex = 4;
+            this.yearLabel.Text = "歲";
             // 
-            // label37
+            // mLabel
             // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Font = new System.Drawing.Font("DFKai-SB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label37.Location = new System.Drawing.Point(29, 162);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(188, 20);
-            this.label37.TabIndex = 5;
-            this.label37.Text = "是否發出推播通知?";
+            this.mLabel.AutoSize = true;
+            this.mLabel.BackColor = System.Drawing.Color.Transparent;
+            this.mLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.mLabel.Location = new System.Drawing.Point(431, 133);
+            this.mLabel.Name = "mLabel";
+            this.mLabel.Size = new System.Drawing.Size(41, 44);
+            this.mLabel.TabIndex = 3;
+            this.mLabel.Text = "m";
             // 
-            // label36
+            // OlderLabel
             // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Location = new System.Drawing.Point(184, 119);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(22, 15);
-            this.label36.TabIndex = 4;
-            this.label36.Text = "歲";
+            this.OlderLabel.AutoSize = true;
+            this.OlderLabel.BackColor = System.Drawing.Color.Transparent;
+            this.OlderLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.OlderLabel.Location = new System.Drawing.Point(123, 192);
+            this.OlderLabel.Name = "OlderLabel";
+            this.OlderLabel.Size = new System.Drawing.Size(148, 56);
+            this.OlderLabel.TabIndex = 2;
+            this.OlderLabel.Text = "年齡:";
             // 
-            // label35
+            // HeightLabel
             // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Location = new System.Drawing.Point(184, 84);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(18, 15);
-            this.label35.TabIndex = 3;
-            this.label35.Text = "m";
+            this.HeightLabel.AutoSize = true;
+            this.HeightLabel.BackColor = System.Drawing.Color.Transparent;
+            this.HeightLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HeightLabel.Location = new System.Drawing.Point(123, 121);
+            this.HeightLabel.Name = "HeightLabel";
+            this.HeightLabel.Size = new System.Drawing.Size(148, 56);
+            this.HeightLabel.TabIndex = 1;
+            this.HeightLabel.Text = "身高:";
             // 
-            // label34
+            // StartDateLabel
             // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("DFKai-SB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label34.Location = new System.Drawing.Point(29, 119);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(62, 20);
-            this.label34.TabIndex = 2;
-            this.label34.Text = "年齡:";
+            this.StartDateLabel.AutoSize = true;
+            this.StartDateLabel.BackColor = System.Drawing.Color.Transparent;
+            this.StartDateLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.StartDateLabel.Location = new System.Drawing.Point(123, 51);
+            this.StartDateLabel.Name = "StartDateLabel";
+            this.StartDateLabel.Size = new System.Drawing.Size(319, 56);
+            this.StartDateLabel.TabIndex = 0;
+            this.StartDateLabel.Text = "起始日設定:";
             // 
-            // label33
+            // addSettingExerciseButton
             // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("DFKai-SB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label33.Location = new System.Drawing.Point(29, 78);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(62, 20);
-            this.label33.TabIndex = 1;
-            this.label33.Text = "身高:";
+            this.addSettingExerciseButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.addSettingExerciseButton.Location = new System.Drawing.Point(412, 517);
+            this.addSettingExerciseButton.Name = "addSettingExerciseButton";
+            this.addSettingExerciseButton.Size = new System.Drawing.Size(128, 43);
+            this.addSettingExerciseButton.TabIndex = 15;
+            this.addSettingExerciseButton.Text = "新增";
+            this.addSettingExerciseButton.UseVisualStyleBackColor = true;
             // 
-            // label22
+            // YesradioButton
             // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("DFKai-SB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label22.Location = new System.Drawing.Point(31, 47);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(125, 20);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "起始日設定:";
+            this.YesradioButton.AutoSize = true;
+            this.YesradioButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.YesradioButton.Location = new System.Drawing.Point(287, 337);
+            this.YesradioButton.Name = "YesradioButton";
+            this.YesradioButton.Size = new System.Drawing.Size(96, 48);
+            this.YesradioButton.TabIndex = 16;
+            this.YesradioButton.TabStop = true;
+            this.YesradioButton.Text = "Yes";
+            this.YesradioButton.UseVisualStyleBackColor = true;
+            // 
+            // NoradioButton
+            // 
+            this.NoradioButton.AutoSize = true;
+            this.NoradioButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.NoradioButton.Location = new System.Drawing.Point(427, 337);
+            this.NoradioButton.Name = "NoradioButton";
+            this.NoradioButton.Size = new System.Drawing.Size(82, 48);
+            this.NoradioButton.TabIndex = 17;
+            this.NoradioButton.TabStop = true;
+            this.NoradioButton.Text = "No";
+            this.NoradioButton.UseVisualStyleBackColor = true;
+            // 
+            // CheckSettingbutton
+            // 
+            this.CheckSettingbutton.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CheckSettingbutton.Location = new System.Drawing.Point(717, 650);
+            this.CheckSettingbutton.Name = "CheckSettingbutton";
+            this.CheckSettingbutton.Size = new System.Drawing.Size(119, 62);
+            this.CheckSettingbutton.TabIndex = 18;
+            this.CheckSettingbutton.Text = "確認";
+            this.CheckSettingbutton.UseVisualStyleBackColor = true;
+            // 
+            // updateRecordButton
+            // 
+            this.updateRecordButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.updateRecordButton.Location = new System.Drawing.Point(454, 25);
+            this.updateRecordButton.Name = "updateRecordButton";
+            this.updateRecordButton.Size = new System.Drawing.Size(186, 42);
+            this.updateRecordButton.TabIndex = 15;
+            this.updateRecordButton.Text = "確認修改";
+            this.updateRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(438, 247);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 36);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "mmHg";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Location = new System.Drawing.Point(438, 196);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 36);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "mmHg";
+            // 
+            // cancelRecordButton
+            // 
+            this.cancelRecordButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cancelRecordButton.Location = new System.Drawing.Point(657, 25);
+            this.cancelRecordButton.Name = "cancelRecordButton";
+            this.cancelRecordButton.Size = new System.Drawing.Size(103, 43);
+            this.cancelRecordButton.TabIndex = 16;
+            this.cancelRecordButton.Text = "取消";
+            this.cancelRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // addDietRecordButton
+            // 
+            this.addDietRecordButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.addDietRecordButton.Location = new System.Drawing.Point(290, 608);
+            this.addDietRecordButton.Name = "addDietRecordButton";
+            this.addDietRecordButton.Size = new System.Drawing.Size(101, 41);
+            this.addDietRecordButton.TabIndex = 28;
+            this.addDietRecordButton.Text = "新增";
+            this.addDietRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // BackViewButton
+            // 
+            this.BackViewButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.BackViewButton.Location = new System.Drawing.Point(548, 15);
+            this.BackViewButton.Name = "BackViewButton";
+            this.BackViewButton.Size = new System.Drawing.Size(111, 49);
+            this.BackViewButton.TabIndex = 14;
+            this.BackViewButton.Text = "返回";
+            this.BackViewButton.UseVisualStyleBackColor = true;
+            // 
+            // EditViewButton
+            // 
+            this.EditViewButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EditViewButton.Location = new System.Drawing.Point(665, 15);
+            this.EditViewButton.Name = "EditViewButton";
+            this.EditViewButton.Size = new System.Drawing.Size(120, 49);
+            this.EditViewButton.TabIndex = 15;
+            this.EditViewButton.Text = "修改";
+            this.EditViewButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1191, 702);
+            this.ClientSize = new System.Drawing.Size(1340, 842);
             this.Controls.Add(this.mainTabControl);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainWindow";
@@ -1030,6 +976,7 @@
             this.mainPage.ResumeLayout(false);
             this.calendarTabControl.ResumeLayout(false);
             this.calendarPage.ResumeLayout(false);
+            this.calendarPage.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.recordViewPage.ResumeLayout(false);
@@ -1039,14 +986,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.settingsPage.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.settingPanel.ResumeLayout(false);
+            this.settingPanel.PerformLayout();
+            this.PermissionPanel.ResumeLayout(false);
+            this.PermissionPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1070,7 +1013,6 @@
         private System.Windows.Forms.TabPage calendarPage;
         private System.Windows.Forms.Label dateEditLabel;
         private System.Windows.Forms.Label waistlineEditLabel;
-        private System.Windows.Forms.Label BPLabel;
         private System.Windows.Forms.Label weightEditLabel;
         private System.Windows.Forms.Label recordEditExerciseLabel;
         private System.Windows.Forms.Label recordEditTitleLabel;
@@ -1087,40 +1029,22 @@
         private System.Windows.Forms.TextBox DBPEditText;
         private System.Windows.Forms.TextBox SBPEditText;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel settingPanel;
+        private System.Windows.Forms.Panel PermissionPanel;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.ComboBox MinuteSetCombo;
+        private System.Windows.Forms.ComboBox HourSetCombo;
+        private System.Windows.Forms.Label TimeSetLabel;
+        private System.Windows.Forms.TextBox OlderText;
+        private System.Windows.Forms.TextBox HeightText;
+        private System.Windows.Forms.ComboBox StartDateCombo;
+        private System.Windows.Forms.Label PermissionLabel;
+        private System.Windows.Forms.Label yearLabel;
+        private System.Windows.Forms.Label mLabel;
+        private System.Windows.Forms.Label OlderLabel;
+        private System.Windows.Forms.Label HeightLabel;
+        private System.Windows.Forms.Label StartDateLabel;
+        private System.Windows.Forms.Label settingExerciseTitleLabel;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label57;
@@ -1129,6 +1053,18 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Button addSettingExerciseButton;
+        private System.Windows.Forms.RadioButton NoradioButton;
+        private System.Windows.Forms.RadioButton YesradioButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button CheckSettingbutton;
+        private System.Windows.Forms.Button updateRecordButton;
+        private System.Windows.Forms.Button cancelRecordButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button EditViewButton;
+        private System.Windows.Forms.Button BackViewButton;
+        private System.Windows.Forms.Button addDietRecordButton;
     }
 }
 
