@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace Health_Calendar
 {
@@ -14,6 +15,10 @@ namespace Health_Calendar
     {
         private DateTime activeDate;
         private DailyRecord activeRecord;
+        public static PrivateFontCollection fonts;
+ 
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -23,7 +28,8 @@ namespace Health_Calendar
             StartPosition = FormStartPosition.CenterScreen;
             MinimumSize = new Size(800, 600);
             MaximumSize = new Size(800, 600);
-
+            fonts =  new PrivateFontCollection();
+            //fonts.AddFontFile(".ttc");
             Exercise.selectAllExercise();
         }
 
@@ -37,6 +43,7 @@ namespace Health_Calendar
             generate_calendar(2018, 6);
             calendarTabControl.ItemSize = new Size(0, 1);
             calendarTabControl.SizeMode = TabSizeMode.Fixed;
+            
         }
 
         private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)
