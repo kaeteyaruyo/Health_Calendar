@@ -4,4 +4,5 @@ Health_Calendar/bin/
 Health_Calendar/obj/
 Health_Calendar/properties/
 Health_Calendar/Health_Calendar.csproj
+Health_Calendar/health_calendar.mdf
 Health_Calendar/health_calendar_log.ldf
