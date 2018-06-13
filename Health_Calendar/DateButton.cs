@@ -10,7 +10,7 @@ namespace Health_Calendar
 {
     class DateButton : Button
     {
-        DateTime date;
+        public DateTime date;
         public DateButton(int x, int y, DateTime date, string type)
         {
             Name = "dateBtn" + date.Date.ToString("yyyyMMdd");
@@ -21,17 +21,6 @@ namespace Health_Calendar
             FlatStyle = FlatStyle.Flat;
             Visible = true;
             // if(type == "") BackColor = ...
-            
-        }
-
-        protected override void OnClick(EventArgs e)
-        {
-            DailyRecord s = new DailyRecord(date.Date);
-            s.print();
-            // parsing data from query and put them into controls
-            base.OnClick(e);
-        }
-
-
+        }        
     }
 }

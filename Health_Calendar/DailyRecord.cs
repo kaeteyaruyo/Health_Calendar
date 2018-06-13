@@ -19,10 +19,9 @@ namespace Health_Calendar
         public double BMI;
         public List<Diet> diets = new List<Diet>();
         public List<Exercise> exercises = new List<Exercise>();
+        public bool modified;
 
         private string connectionString;
-        private bool modified;
-
         public DailyRecord(DateTime date)
         {
             this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|health_calendar.mdf;Integrated Security=True";
@@ -107,8 +106,8 @@ namespace Health_Calendar
                     {
                         command = new SqlCommand("insert into daily_diet(date, meal, diet, calorie) values('"
                             + date.ToString("yyyy-MM-dd") + "', "
-                            + d.meal_id + ", "
-                            + d.diet.Replace("'", "''") + ", "
+                            + d.meal_id + ", '"
+                            + d.diet.Replace("'", "''") + "', "
                             + d.calorie + ")", database);
                         command.ExecuteNonQuery();
                     }

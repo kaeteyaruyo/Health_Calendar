@@ -44,7 +44,7 @@
             this.recordViewPanel = new System.Windows.Forms.Panel();
             this.BMIViewLabel = new System.Windows.Forms.Label();
             this.targetViewLabel = new System.Windows.Forms.Label();
-            this.wasitlineViewLabel = new System.Windows.Forms.Label();
+            this.waistlineViewLabel = new System.Windows.Forms.Label();
             this.DBPViewLabel = new System.Windows.Forms.Label();
             this.SBPViewLabel = new System.Windows.Forms.Label();
             this.dateViewLabel = new System.Windows.Forms.Label();
@@ -134,7 +134,9 @@
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(1025, 469);
+            this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 0;
+            this.mainTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.mainTabControl_DrawItem);
             // 
             // mainPage
             // 
@@ -269,13 +271,15 @@
             this.recordViewPage.Size = new System.Drawing.Size(623, 343);
             this.recordViewPage.TabIndex = 1;
             this.recordViewPage.UseVisualStyleBackColor = true;
+            this.recordViewPage.Enter += new System.EventHandler(this.recordViewPage_Enter);
+            this.recordViewPage.Leave += new System.EventHandler(this.recordViewPage_Leave);
             // 
             // recordViewPanel
             // 
             this.recordViewPanel.AutoScroll = true;
             this.recordViewPanel.Controls.Add(this.BMIViewLabel);
             this.recordViewPanel.Controls.Add(this.targetViewLabel);
-            this.recordViewPanel.Controls.Add(this.wasitlineViewLabel);
+            this.recordViewPanel.Controls.Add(this.waistlineViewLabel);
             this.recordViewPanel.Controls.Add(this.DBPViewLabel);
             this.recordViewPanel.Controls.Add(this.SBPViewLabel);
             this.recordViewPanel.Controls.Add(this.dateViewLabel);
@@ -307,14 +311,14 @@
             this.targetViewLabel.TabIndex = 8;
             this.targetViewLabel.Text = "離目標還有XX kg喔!";
             // 
-            // wasitlineViewLabel
+            // waistlineViewLabel
             // 
-            this.wasitlineViewLabel.AutoSize = true;
-            this.wasitlineViewLabel.Location = new System.Drawing.Point(50, 194);
-            this.wasitlineViewLabel.Name = "wasitlineViewLabel";
-            this.wasitlineViewLabel.Size = new System.Drawing.Size(110, 15);
-            this.wasitlineViewLabel.TabIndex = 7;
-            this.wasitlineViewLabel.Text = "腰圍:             cm";
+            this.waistlineViewLabel.AutoSize = true;
+            this.waistlineViewLabel.Location = new System.Drawing.Point(50, 194);
+            this.waistlineViewLabel.Name = "waistlineViewLabel";
+            this.waistlineViewLabel.Size = new System.Drawing.Size(110, 15);
+            this.waistlineViewLabel.TabIndex = 7;
+            this.waistlineViewLabel.Text = "腰圍:             cm";
             // 
             // DBPViewLabel
             // 
@@ -373,6 +377,8 @@
             this.recordEditPage.Size = new System.Drawing.Size(623, 343);
             this.recordEditPage.TabIndex = 0;
             this.recordEditPage.UseVisualStyleBackColor = true;
+            this.recordEditPage.Enter += new System.EventHandler(this.recordEditPage_Enter);
+            this.recordEditPage.Leave += new System.EventHandler(this.recordEditPage_Leave);
             // 
             // panel1
             // 
@@ -562,7 +568,7 @@
             this.summaryPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.summaryPage.Size = new System.Drawing.Size(995, 461);
             this.summaryPage.TabIndex = 1;
-            this.summaryPage.Text = "統計圖";
+            this.summaryPage.Text = "統計";
             this.summaryPage.UseVisualStyleBackColor = true;
             // 
             // settingsPage
@@ -1062,7 +1068,7 @@
         private System.Windows.Forms.Panel recordViewPanel;
         private System.Windows.Forms.Label BMIViewLabel;
         private System.Windows.Forms.Label targetViewLabel;
-        private System.Windows.Forms.Label wasitlineViewLabel;
+        private System.Windows.Forms.Label waistlineViewLabel;
         private System.Windows.Forms.Label DBPViewLabel;
         private System.Windows.Forms.Label SBPViewLabel;
         private System.Windows.Forms.Label dateViewLabel;
