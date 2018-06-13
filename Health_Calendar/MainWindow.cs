@@ -143,9 +143,35 @@ namespace Health_Calendar
 
         private void recordEditPage_Leave(object sender, EventArgs e)
         {
-            activeRecord.update();
             if (activeRecord != null)
                 activeRecord = null;
         }
+
+        private void backViewButton_Click(object sender, EventArgs e)
+        {
+            calendarTabControl.SelectedTab = calendarPage;
+        }
+
+        private void editViewButton_Click(object sender, EventArgs e)
+        {
+            calendarTabControl.SelectedTab = recordEditPage;
+        }
+
+        private void updateRecordButton_Click(object sender, EventArgs e)
+        {
+            activeRecord.weight = Convert.ToInt32(weightEditText.Text);
+            activeRecord.waistline = Convert.ToInt32(waistlineEditText.Text);
+            activeRecord.SBP = Convert.ToInt32(SBPEditText.Text);
+            activeRecord.DBP = Convert.ToInt32(DBPEditText.Text);
+            //activeRecord.diets.Clear();
+            
+            activeRecord.update();
+            calendarTabControl.SelectedTab = recordViewPage;
+        }
+        private void cancelRecordButton_Click(object sender, EventArgs e)
+        {
+            calendarTabControl.SelectedTab = recordViewPage;
+        }
+
     }
 }
