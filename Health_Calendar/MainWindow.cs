@@ -28,7 +28,11 @@ namespace Health_Calendar
             mainTabControl.Size = new Size(720, 455);
             mainTabControl.ItemSize = new Size(150, 25);
             mainTabControl.Location = new Point((this.Size.Width - mainTabControl.Size.Width)/2 - 15, (this.Size.Height - mainTabControl.Size.Height) / 2);
+            calendarTabControl.Size = new Size(720, 455);
+            calendarTabControl.Location = new Point(0, 0);
             generate_calendar(2018, 6);
+            calendarTabControl.ItemSize = new Size(0, 1);
+            calendarTabControl.SizeMode = TabSizeMode.Fixed;
         }
 
         private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)

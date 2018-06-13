@@ -27,7 +27,6 @@ namespace Health_Calendar
         protected override void OnClick(EventArgs e)
         {
             DailyRecord s = new DailyRecord(date.Date);
-            s.select();
             s.print();
             // parsing data from query and put them into controls
             base.OnClick(e);
