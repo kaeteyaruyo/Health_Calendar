@@ -100,6 +100,8 @@
     <Compile Include="DietView.Designer.cs">
       <DependentUpon>DietView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting.cs" />
+    <Compile Include="Summary.cs" />
     <EmbeddedResource Include="DateButton.resx">
       <DependentUpon>DateButton.cs</DependentUpon>
     </EmbeddedResource>

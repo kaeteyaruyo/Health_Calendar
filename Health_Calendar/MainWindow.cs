@@ -17,10 +17,10 @@ namespace Health_Calendar
         private DailyRecord activeRecord;
         public static PrivateFontCollection fonts;
         private List<DietPanel> dietPanels = new List<DietPanel>();
+        private List<ExercisePanel> exercisePanels = new List<ExercisePanel>();
+        private Setting setting = new Setting();
         public MainWindow()
         {
-            
-
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -34,12 +34,8 @@ namespace Health_Calendar
             Exercise.selectAllExercise();
         }
 
-
-
-
         private void MainWindow_Load(object sender, EventArgs e)
         {
-           
             mainTabControl.Size = new Size(720, 455);
             mainTabControl.ItemSize = new Size(150, 25);
             mainTabControl.Location = new Point((this.Size.Width - mainTabControl.Size.Width)/2 - 15, (this.Size.Height - mainTabControl.Size.Height) / 2);
@@ -104,13 +100,8 @@ namespace Health_Calendar
             this.mLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.OlderLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HeightLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-
             this.summaryTitle.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             mainTabControl.Font=new Font(fonts.Families[0], 15, System.Drawing.FontStyle.Bold);
-
-
-
-
         }
 
         private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)
@@ -155,6 +146,7 @@ namespace Health_Calendar
                 calendarPage.Controls.Add(dateBtn);
                 if ((w + i) % 7 == 6) j++;
             }
+
         }
         public void DateButton_Click(object sender, EventArgs e, DateTime d)
         {
@@ -286,17 +278,14 @@ namespace Health_Calendar
 
         private void YesradioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (YesradioButton.Checked == true)
-            { PermissionPanel.Visible = true; }
-            if (NoradioButton.Checked == true)
-            { PermissionPanel.Visible = false; }
+            setPermissionPanel();
         }
 
-        private void addSettingExerciseButton_Click(object sender, EventArgs e)
+        private void NoradioButton_CheckedChanged(object sender, EventArgs e)
         {
-            ExercisePanel excrise1 = new ExercisePanel();
+            setPermissionPanel();
         }
-            
+
         private void addDietRecordButton_Click(object sender, EventArgs e)
         {
             DietPanel dp = new DietPanel(this, dietPanels.Count, recordEditDietLabel.Location.X, recordEditDietLabel.Location.Y + recordEditDietLabel.Height + 30);
@@ -327,6 +316,109 @@ namespace Health_Calendar
                 t.BackColor = Color.LightCoral;
                 return false;
             }
+        }
+
+        private bool checkComboBoxSelected(ComboBox c)
+        {
+            if (c.SelectedItem != null)
+            {
+                c.BackColor = Color.White;
+                return true;
+            }
+            else
+            {
+                c.BackColor = Color.LightCoral;
+                return false;
+            }
+        }
+
+        private void settingsPage_Enter(object sender, EventArgs e)
+        {
+            StartDateCombo.SelectedIndex = setting.startDate - 1;
+            Console.WriteLine(setting.height.ToString());
+            HeightText.Text = setting.height.ToString();
+            if (setting.alarm)
+            {
+                YesradioButton.Checked = true;
+                HourSetCombo.SelectedIndex = setting.alarmHour;
+                MinuteSetCombo.SelectedIndex = setting.alarmMinute;
+            }
+            else
+                NoradioButton.Checked = true;
+            setPermissionPanel();
+            foreach (Exercise ex in Exercise.exerciseList)
+            {
+                ExercisePanel ep = new ExercisePanel(this, exercisePanels.Count, settingExerciseTitleLabel.Location.X, settingExerciseTitleLabel.Location.Y + settingExerciseTitleLabel.Height + 30);
+                ep.setData(ex.title, ex.timeLength, ex.calorie, ex.detail);
+                exercisePanels.Add(ep);
+                settingPanel.Controls.Add(ep);
+                
+            }
+
+        }
+        private void settingsPage_Leave(object sender, EventArgs e)
+        {
+            for (int i = exercisePanels.Count - 1; i >= 0; --i)
+                removeExercisePanel(i);
+        }
+
+        private void addSettingExerciseButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("add exercise panel");
+            ExercisePanel ep = new ExercisePanel(this, exercisePanels.Count, settingExerciseTitleLabel.Location.X, settingExerciseTitleLabel.Location.Y + settingExerciseTitleLabel.Height + 30);
+            exercisePanels.Add(ep);
+            settingPanel.Controls.Add(ep);
+        }
+
+        public void removeExercisePanel(int index)
+        {
+            ExercisePanel tmp = exercisePanels[index];
+            exercisePanels.RemoveAt(index);
+            tmp.Dispose();
+            for (int i = 0; i < exercisePanels.Count; ++i)
+            {
+                exercisePanels[i].setPosition(i);
+            }
+        }
+        public void setPermissionPanel()
+        {
+            if (YesradioButton.Checked == true)
+                PermissionPanel.Visible = true;
+
+            if (NoradioButton.Checked == true)
+                PermissionPanel.Visible = false;
+        }
+
+        private void CheckSettingbutton_Click(object sender, EventArgs e)
+        {
+            bool valid = true;
+
+            valid = checkTextNotEmpty(HeightText);
+            valid = checkComboBoxSelected(StartDateCombo);
+            valid = checkComboBoxSelected(HourSetCombo);
+            valid = checkComboBoxSelected(MinuteSetCombo);
+            for (int i = 0; i < exercisePanels.Count; ++i)
+                valid = exercisePanels[i].checkValid();
+
+            if (!valid) return;
+            else
+            {
+                setting.startDate = Convert.ToInt32(StartDateCombo.SelectedItem);
+                setting.height = Convert.ToDouble(HeightText.Text);
+                if (YesradioButton.Checked) setting.alarm = true;
+                else setting.alarm = false;
+                setting.alarmHour = Convert.ToInt32(HourSetCombo.SelectedItem);
+                setting.alarmMinute = Convert.ToInt32(MinuteSetCombo.SelectedItem);
+                setting.update();
+
+                Exercise.exerciseList.Clear();
+                for(int i = 0; i < exercisePanels.Count; ++i) {
+                    Exercise.exerciseList.Add(new Exercise(i + 1, exercisePanels[i].title, exercisePanels[i].detail, exercisePanels[i].timeLength, exercisePanels[i].calorie));
+                }
+                Exercise.update();
+                MessageBox.Show("設定更新完成！", "Setting updated");
+            }
+
         }
     }
 }
