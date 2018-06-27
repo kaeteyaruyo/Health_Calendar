@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Threading;
 
 namespace Health_Calendar
 {
     public partial class MainWindow : Form
     {
+        private System.Threading.Timer timer;
         private DateTime activeDate;
         private DailyRecord activeRecord;
         public static PrivateFontCollection fonts;
@@ -29,7 +31,6 @@ namespace Health_Calendar
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            MinimizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
             MinimumSize = new Size(800, 600);
             MaximumSize = new Size(800, 600);
@@ -523,8 +524,57 @@ namespace Health_Calendar
                     Exercise.exerciseList.Add(new Exercise(i + 1, exercisePanels[i].title, exercisePanels[i].detail, exercisePanels[i].timeLength, exercisePanels[i].calorie));
                 }
                 Exercise.update();
+                if (setting.alarm)
+                {
+                    SetUpTimer(new TimeSpan(setting.alarmHour, setting.alarmMinute, 00));
+                }
+                else
+                    timer = null;
                 MessageBox.Show("設定更新完成！", "Setting updated");
             }
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon.Visible = true;
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon.Visible = false;
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("你確定要關閉健康月曆嗎?（按最小化可背景執行）", "確定要離開?", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void SetUpTimer(TimeSpan alertTime)
+        {
+            DateTime current = DateTime.Now;
+            TimeSpan timeToGo = alertTime - current.TimeOfDay;
+            if (timeToGo < TimeSpan.Zero)
+            {
+                return;//time already passed
+            }
+            this.timer = new System.Threading.Timer(x =>
+            {
+                this.alarmPopup();
+            }, null, timeToGo, Timeout.InfiniteTimeSpan);
+        }
+
+        private void alarmPopup()
+        {
+            notifyIcon.ShowBalloonTip(60000);
         }
     }
 }
