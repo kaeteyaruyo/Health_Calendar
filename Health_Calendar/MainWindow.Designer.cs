@@ -1,4 +1,7 @@
-﻿namespace Health_Calendar
+﻿using System.Windows.Forms;
+using System.Drawing.Text;
+using System.Drawing;
+namespace Health_Calendar
 {
     partial class MainWindow
     {
@@ -26,6 +29,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+
+
         private void InitializeComponent()
         {
             this.mainTabControl = new System.Windows.Forms.TabControl();
@@ -33,13 +38,13 @@
             this.calendarTabControl = new System.Windows.Forms.TabControl();
             this.calendarPage = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
+            this.friLabel = new System.Windows.Forms.Label();
+            this.theLabel = new System.Windows.Forms.Label();
+            this.wedLabel = new System.Windows.Forms.Label();
+            this.tueLabel = new System.Windows.Forms.Label();
+            this.monLabel = new System.Windows.Forms.Label();
+            this.sunLabel = new System.Windows.Forms.Label();
+            this.satLabel = new System.Windows.Forms.Label();
             this.recordViewPage = new System.Windows.Forms.TabPage();
             this.recordViewPanel = new System.Windows.Forms.Panel();
             this.editViewButton = new System.Windows.Forms.Button();
@@ -78,6 +83,7 @@
             this.summaryPage = new System.Windows.Forms.TabPage();
             this.settingsPage = new System.Windows.Forms.TabPage();
             this.settingPanel = new System.Windows.Forms.Panel();
+            this.settingPageTitleLabel = new System.Windows.Forms.Label();
             this.CheckSettingbutton = new System.Windows.Forms.Button();
             this.NoradioButton = new System.Windows.Forms.RadioButton();
             this.YesradioButton = new System.Windows.Forms.RadioButton();
@@ -98,7 +104,6 @@
             this.OlderLabel = new System.Windows.Forms.Label();
             this.HeightLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.settingPageTitleLabel = new System.Windows.Forms.Label();
             this.mainTabControl.SuspendLayout();
             this.mainPage.SuspendLayout();
             this.calendarTabControl.SuspendLayout();
@@ -158,7 +163,7 @@
             // 
             this.calendarPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b7;
             this.calendarPage.Controls.Add(this.panel8);
-            this.calendarPage.Controls.Add(this.label57);
+            this.calendarPage.Controls.Add(this.satLabel);
             this.calendarPage.Location = new System.Drawing.Point(4, 28);
             this.calendarPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.calendarPage.Name = "calendarPage";
@@ -169,87 +174,87 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.label52);
-            this.panel8.Controls.Add(this.label53);
-            this.panel8.Controls.Add(this.label54);
-            this.panel8.Controls.Add(this.label55);
-            this.panel8.Controls.Add(this.label56);
-            this.panel8.Controls.Add(this.label51);
+            this.panel8.Controls.Add(this.friLabel);
+            this.panel8.Controls.Add(this.theLabel);
+            this.panel8.Controls.Add(this.wedLabel);
+            this.panel8.Controls.Add(this.tueLabel);
+            this.panel8.Controls.Add(this.monLabel);
+            this.panel8.Controls.Add(this.sunLabel);
             this.panel8.Location = new System.Drawing.Point(6, 6);
             this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(840, 59);
             this.panel8.TabIndex = 0;
             // 
-            // label52
+            // friLabel
             // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label52.Location = new System.Drawing.Point(757, 16);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(80, 40);
-            this.label52.TabIndex = 2;
-            this.label52.Text = "FRI";
+            this.friLabel.AutoSize = true;
+            this.friLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.friLabel.Location = new System.Drawing.Point(757, 16);
+            this.friLabel.Name = "friLabel";
+            this.friLabel.Size = new System.Drawing.Size(80, 40);
+            this.friLabel.TabIndex = 2;
+            this.friLabel.Text = "FRI";
             // 
-            // label53
+            // theLabel
             // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label53.Location = new System.Drawing.Point(622, 16);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(80, 40);
-            this.label53.TabIndex = 3;
-            this.label53.Text = "THU";
+            this.theLabel.AutoSize = true;
+            this.theLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.theLabel.Location = new System.Drawing.Point(622, 16);
+            this.theLabel.Name = "theLabel";
+            this.theLabel.Size = new System.Drawing.Size(80, 40);
+            this.theLabel.TabIndex = 3;
+            this.theLabel.Text = "THU";
             // 
-            // label54
+            // wedLabel
             // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label54.Location = new System.Drawing.Point(493, 16);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(80, 40);
-            this.label54.TabIndex = 4;
-            this.label54.Text = "WED";
+            this.wedLabel.AutoSize = true;
+            this.wedLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.wedLabel.Location = new System.Drawing.Point(493, 16);
+            this.wedLabel.Name = "wedLabel";
+            this.wedLabel.Size = new System.Drawing.Size(80, 40);
+            this.wedLabel.TabIndex = 4;
+            this.wedLabel.Text = "WED";
             // 
-            // label55
+            // tueLabel
             // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label55.Location = new System.Drawing.Point(357, 16);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(80, 40);
-            this.label55.TabIndex = 5;
-            this.label55.Text = "TUE";
+            this.tueLabel.AutoSize = true;
+            this.tueLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tueLabel.Location = new System.Drawing.Point(351, 16);
+            this.tueLabel.Name = "tueLabel";
+            this.tueLabel.Size = new System.Drawing.Size(80, 40);
+            this.tueLabel.TabIndex = 5;
+            this.tueLabel.Text = "TUE";
             // 
-            // label56
+            // monLabel
             // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label56.Location = new System.Drawing.Point(226, 16);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(80, 40);
-            this.label56.TabIndex = 6;
-            this.label56.Text = "MON";
+            this.monLabel.AutoSize = true;
+            this.monLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.monLabel.Location = new System.Drawing.Point(213, 16);
+            this.monLabel.Name = "monLabel";
+            this.monLabel.Size = new System.Drawing.Size(80, 40);
+            this.monLabel.TabIndex = 6;
+            this.monLabel.Text = "MON";
             // 
-            // label51
+            // sunLabel
             // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label51.Location = new System.Drawing.Point(90, 16);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(80, 40);
-            this.label51.TabIndex = 1;
-            this.label51.Text = "SUN";
+            this.sunLabel.AutoSize = true;
+            this.sunLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.sunLabel.Location = new System.Drawing.Point(77, 16);
+            this.sunLabel.Name = "sunLabel";
+            this.sunLabel.Size = new System.Drawing.Size(80, 40);
+            this.sunLabel.TabIndex = 1;
+            this.sunLabel.Text = "SUN";
             // 
-            // label57
+            // satLabel
             // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label57.Location = new System.Drawing.Point(890, 22);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(80, 40);
-            this.label57.TabIndex = 3;
-            this.label57.Text = "SAT";
+            this.satLabel.AutoSize = true;
+            this.satLabel.Font = new System.Drawing.Font("華康竹風體W4", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.satLabel.Location = new System.Drawing.Point(890, 22);
+            this.satLabel.Name = "satLabel";
+            this.satLabel.Size = new System.Drawing.Size(80, 40);
+            this.satLabel.TabIndex = 3;
+            this.satLabel.Text = "SAT";
             // 
             // recordViewPage
             // 
@@ -279,7 +284,7 @@
             this.recordViewPanel.Controls.Add(this.dateViewLabel);
             this.recordViewPanel.Controls.Add(this.label19);
             this.recordViewPanel.Controls.Add(this.weightViewLabel);
-            this.recordViewPanel.Location = new System.Drawing.Point(41, 36);
+            this.recordViewPanel.Location = new System.Drawing.Point(40, 36);
             this.recordViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordViewPanel.Name = "recordViewPanel";
             this.recordViewPanel.Size = new System.Drawing.Size(810, 574);
@@ -287,7 +292,7 @@
             // 
             // editViewButton
             // 
-            this.editViewButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editViewButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editViewButton.Location = new System.Drawing.Point(665, 15);
             this.editViewButton.Name = "editViewButton";
             this.editViewButton.Size = new System.Drawing.Size(120, 49);
@@ -430,7 +435,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(941, 798);
+            this.panel1.Size = new System.Drawing.Size(940, 798);
             this.panel1.TabIndex = 14;
             // 
             // addDietRecordButton
@@ -458,7 +463,7 @@
             this.cancelRecordButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cancelRecordButton.Location = new System.Drawing.Point(796, 12);
             this.cancelRecordButton.Name = "cancelRecordButton";
-            this.cancelRecordButton.Size = new System.Drawing.Size(103, 43);
+            this.cancelRecordButton.Size = new System.Drawing.Size(104, 43);
             this.cancelRecordButton.TabIndex = 16;
             this.cancelRecordButton.Text = "取消";
             this.cancelRecordButton.UseVisualStyleBackColor = true;
@@ -485,7 +490,7 @@
             // 
             // updateRecordButton
             // 
-            this.updateRecordButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.updateRecordButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.updateRecordButton.Location = new System.Drawing.Point(595, 13);
             this.updateRecordButton.Name = "updateRecordButton";
             this.updateRecordButton.Size = new System.Drawing.Size(186, 42);
@@ -654,7 +659,7 @@
             // settingsPage
             // 
             this.settingsPage.AutoScroll = true;
-            this.settingsPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b2;
+            this.settingsPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b3;
             this.settingsPage.Controls.Add(this.settingPanel);
             this.settingsPage.Location = new System.Drawing.Point(28, 4);
             this.settingsPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -686,8 +691,18 @@
             this.settingPanel.Location = new System.Drawing.Point(19, 24);
             this.settingPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settingPanel.Name = "settingPanel";
-            this.settingPanel.Size = new System.Drawing.Size(859, 732);
+            this.settingPanel.Size = new System.Drawing.Size(860, 732);
             this.settingPanel.TabIndex = 1;
+            // 
+            // settingPageTitleLabel
+            // 
+            this.settingPageTitleLabel.AutoSize = true;
+            this.settingPageTitleLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.settingPageTitleLabel.Location = new System.Drawing.Point(15, 7);
+            this.settingPageTitleLabel.Name = "settingPageTitleLabel";
+            this.settingPageTitleLabel.Size = new System.Drawing.Size(208, 44);
+            this.settingPageTitleLabel.TabIndex = 19;
+            this.settingPageTitleLabel.Text = "基本設定:";
             // 
             // CheckSettingbutton
             // 
@@ -703,7 +718,7 @@
             // 
             this.NoradioButton.AutoSize = true;
             this.NoradioButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.NoradioButton.Location = new System.Drawing.Point(427, 337);
+            this.NoradioButton.Location = new System.Drawing.Point(428, 337);
             this.NoradioButton.Name = "NoradioButton";
             this.NoradioButton.Size = new System.Drawing.Size(82, 48);
             this.NoradioButton.TabIndex = 17;
@@ -726,9 +741,9 @@
             // addSettingExerciseButton
             // 
             this.addSettingExerciseButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.addSettingExerciseButton.Location = new System.Drawing.Point(412, 517);
+            this.addSettingExerciseButton.Location = new System.Drawing.Point(402, 515);
             this.addSettingExerciseButton.Name = "addSettingExerciseButton";
-            this.addSettingExerciseButton.Size = new System.Drawing.Size(128, 43);
+            this.addSettingExerciseButton.Size = new System.Drawing.Size(138, 45);
             this.addSettingExerciseButton.TabIndex = 15;
             this.addSettingExerciseButton.Text = "新增";
             this.addSettingExerciseButton.UseVisualStyleBackColor = true;
@@ -843,7 +858,7 @@
             "57",
             "58",
             "59"});
-            this.MinuteSetCombo.Location = new System.Drawing.Point(310, 13);
+            this.MinuteSetCombo.Location = new System.Drawing.Point(321, 13);
             this.MinuteSetCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinuteSetCombo.Name = "MinuteSetCombo";
             this.MinuteSetCombo.Size = new System.Drawing.Size(72, 44);
@@ -878,7 +893,7 @@
             "22",
             "23",
             "00"});
-            this.HourSetCombo.Location = new System.Drawing.Point(203, 13);
+            this.HourSetCombo.Location = new System.Drawing.Point(202, 13);
             this.HourSetCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HourSetCombo.Name = "HourSetCombo";
             this.HourSetCombo.Size = new System.Drawing.Size(70, 44);
@@ -977,25 +992,19 @@
             this.HeightLabel.TabIndex = 1;
             this.HeightLabel.Text = "身高:";
             // 
-            // settingPageTitleLabel
-            // 
-            this.settingPageTitleLabel.AutoSize = true;
-            this.settingPageTitleLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.settingPageTitleLabel.Location = new System.Drawing.Point(15, 7);
-            this.settingPageTitleLabel.Name = "settingPageTitleLabel";
-            this.settingPageTitleLabel.Size = new System.Drawing.Size(208, 44);
-            this.settingPageTitleLabel.TabIndex = 19;
-            this.settingPageTitleLabel.Text = "基本設定:";
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1340, 842);
             this.Controls.Add(this.mainTabControl);
+            this.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainWindow";
             this.Text = "Health_Calendar";
+            this.TransparencyKey = System.Drawing.Color.DimGray;
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.mainTabControl.ResumeLayout(false);
             this.mainPage.ResumeLayout(false);
@@ -1071,13 +1080,13 @@
         private System.Windows.Forms.Label StartDateLabel;
         private System.Windows.Forms.Label settingExerciseTitleLabel;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label friLabel;
+        private System.Windows.Forms.Label satLabel;
+        private System.Windows.Forms.Label theLabel;
+        private System.Windows.Forms.Label wedLabel;
+        private System.Windows.Forms.Label tueLabel;
+        private System.Windows.Forms.Label monLabel;
+        private System.Windows.Forms.Label sunLabel;
         private System.Windows.Forms.Button addSettingExerciseButton;
         private System.Windows.Forms.RadioButton NoradioButton;
         private System.Windows.Forms.RadioButton YesradioButton;
