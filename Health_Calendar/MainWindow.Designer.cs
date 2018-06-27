@@ -53,7 +53,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.weightViewLabel = new System.Windows.Forms.Label();
             this.recordEditPage = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.editPanel = new System.Windows.Forms.Panel();
             this.addDietRecordButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cancelRecordButton = new System.Windows.Forms.Button();
@@ -106,7 +106,7 @@
             this.recordViewPage.SuspendLayout();
             this.recordViewPanel.SuspendLayout();
             this.recordEditPage.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.editPanel.SuspendLayout();
             this.settingsPage.SuspendLayout();
             this.settingPanel.SuspendLayout();
             this.PermissionPanel.SuspendLayout();
@@ -392,7 +392,7 @@
             // recordEditPage
             // 
             this.recordEditPage.AutoScroll = true;
-            this.recordEditPage.Controls.Add(this.panel1);
+            this.recordEditPage.Controls.Add(this.editPanel);
             this.recordEditPage.Location = new System.Drawing.Point(4, 25);
             this.recordEditPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordEditPage.Name = "recordEditPage";
@@ -403,35 +403,36 @@
             this.recordEditPage.Enter += new System.EventHandler(this.recordEditPage_Enter);
             this.recordEditPage.Leave += new System.EventHandler(this.recordEditPage_Leave);
             // 
-            // panel1
+            // editPanel
             // 
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.addDietRecordButton);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.cancelRecordButton);
-            this.panel1.Controls.Add(this.exerciseCheckBox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.updateRecordButton);
-            this.panel1.Controls.Add(this.cmLabel);
-            this.panel1.Controls.Add(this.kgLabel);
-            this.panel1.Controls.Add(this.waistlineEditText);
-            this.panel1.Controls.Add(this.weightEditText);
-            this.panel1.Controls.Add(this.addDietButton);
-            this.panel1.Controls.Add(this.recordEditDietLabel);
-            this.panel1.Controls.Add(this.DBPEditText);
-            this.panel1.Controls.Add(this.SBPEditText);
-            this.panel1.Controls.Add(this.dateEditLabel);
-            this.panel1.Controls.Add(this.recordEditTitleLabel);
-            this.panel1.Controls.Add(this.recordEditExerciseLabel);
-            this.panel1.Controls.Add(this.waistlineEditLabel);
-            this.panel1.Controls.Add(this.DBPEditLabel);
-            this.panel1.Controls.Add(this.weightEditLabel);
-            this.panel1.Controls.Add(this.SBPEditLabel);
-            this.panel1.Location = new System.Drawing.Point(3, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(699, 665);
-            this.panel1.TabIndex = 14;
+            this.editPanel.AutoSize = true;
+            this.editPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.editPanel.Controls.Add(this.addDietRecordButton);
+            this.editPanel.Controls.Add(this.label2);
+            this.editPanel.Controls.Add(this.cancelRecordButton);
+            this.editPanel.Controls.Add(this.exerciseCheckBox);
+            this.editPanel.Controls.Add(this.label1);
+            this.editPanel.Controls.Add(this.updateRecordButton);
+            this.editPanel.Controls.Add(this.cmLabel);
+            this.editPanel.Controls.Add(this.kgLabel);
+            this.editPanel.Controls.Add(this.waistlineEditText);
+            this.editPanel.Controls.Add(this.weightEditText);
+            this.editPanel.Controls.Add(this.addDietButton);
+            this.editPanel.Controls.Add(this.recordEditDietLabel);
+            this.editPanel.Controls.Add(this.DBPEditText);
+            this.editPanel.Controls.Add(this.SBPEditText);
+            this.editPanel.Controls.Add(this.dateEditLabel);
+            this.editPanel.Controls.Add(this.recordEditTitleLabel);
+            this.editPanel.Controls.Add(this.recordEditExerciseLabel);
+            this.editPanel.Controls.Add(this.waistlineEditLabel);
+            this.editPanel.Controls.Add(this.DBPEditLabel);
+            this.editPanel.Controls.Add(this.weightEditLabel);
+            this.editPanel.Controls.Add(this.SBPEditLabel);
+            this.editPanel.Location = new System.Drawing.Point(3, 0);
+            this.editPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editPanel.Name = "editPanel";
+            this.editPanel.Size = new System.Drawing.Size(745, 665);
+            this.editPanel.TabIndex = 14;
             // 
             // addDietRecordButton
             // 
@@ -443,6 +444,7 @@
             this.addDietRecordButton.TabIndex = 28;
             this.addDietRecordButton.Text = "新增";
             this.addDietRecordButton.UseVisualStyleBackColor = true;
+            this.addDietRecordButton.Click += new System.EventHandler(this.addDietRecordButton_Click);
             // 
             // label2
             // 
@@ -1003,8 +1005,9 @@
             this.recordViewPanel.ResumeLayout(false);
             this.recordViewPanel.PerformLayout();
             this.recordEditPage.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.recordEditPage.PerformLayout();
+            this.editPanel.ResumeLayout(false);
+            this.editPanel.PerformLayout();
             this.settingsPage.ResumeLayout(false);
             this.settingPanel.ResumeLayout(false);
             this.settingPanel.PerformLayout();
@@ -1039,7 +1042,7 @@
         private System.Windows.Forms.CheckedListBox exerciseCheckBox;
         private System.Windows.Forms.Label DBPEditLabel;
         private System.Windows.Forms.Label SBPEditLabel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel editPanel;
         private System.Windows.Forms.Label cmLabel;
         private System.Windows.Forms.Label kgLabel;
         private System.Windows.Forms.TextBox waistlineEditText;

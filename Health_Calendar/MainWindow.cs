@@ -14,6 +14,7 @@ namespace Health_Calendar
     {
         private DateTime activeDate;
         private DailyRecord activeRecord;
+        private List<DietPanel> dietPanels = new List<DietPanel>();
         public MainWindow()
         {
             InitializeComponent();
@@ -121,7 +122,21 @@ namespace Health_Calendar
                 SBPEditText.Text = activeRecord.SBP.ToString();
                 DBPEditText.Text = activeRecord.DBP.ToString();
             }
+            else
+            {
+                weightEditText.Text = "0";
+                waistlineEditText.Text = "0";
+                SBPEditText.Text = "0";
+                DBPEditText.Text = "0";
+            }
 
+            foreach (Diet d in activeRecord.diets)
+            {
+                DietPanel dp = new DietPanel(this, dietPanels.Count, recordEditDietLabel.Location.X, recordEditDietLabel.Location.Y + recordEditDietLabel.Height + 30);
+                dp.setData(d.meal_id, d.calorie, d.diet);
+                dietPanels.Add(dp);
+                editPanel.Controls.Add(dp);
+            }
             foreach (Exercise ex in Exercise.exerciseList)
                 exerciseCheckBox.Items.Add(ex.title);
             foreach (Exercise ex in activeRecord.exercises)
@@ -131,13 +146,15 @@ namespace Health_Calendar
                         exerciseCheckBox.SetItemChecked(i, true);
                         break;
                     }
-
         }
 
         private void recordEditPage_Leave(object sender, EventArgs e)
         {
             if (activeRecord != null)
                 activeRecord = null;
+            exerciseCheckBox.Items.Clear();
+            for (int i = dietPanels.Count - 1; i >= 0; --i)
+                removeDietPanel(i);
         }
 
         private void backViewButton_Click(object sender, EventArgs e)
@@ -152,19 +169,68 @@ namespace Health_Calendar
 
         private void updateRecordButton_Click(object sender, EventArgs e)
         {
-            activeRecord.weight = Convert.ToInt32(weightEditText.Text);
-            activeRecord.waistline = Convert.ToInt32(waistlineEditText.Text);
-            activeRecord.SBP = Convert.ToInt32(SBPEditText.Text);
-            activeRecord.DBP = Convert.ToInt32(DBPEditText.Text);
-            //activeRecord.diets.Clear();
-            
-            activeRecord.update();
-            calendarTabControl.SelectedTab = recordViewPage;
+            bool valid = true;
+            valid = checkTextNotEmpty(weightEditText);
+            valid = checkTextNotEmpty(waistlineEditText);
+            valid = checkTextNotEmpty(SBPEditText);
+            valid = checkTextNotEmpty(DBPEditText);
+
+            for (int i = 0; i < dietPanels.Count; ++i)
+                valid = dietPanels[i].checkValid();
+
+            if (!valid) return;
+            else
+            {
+                activeRecord.weight = Convert.ToInt32(weightEditText.Text);
+                activeRecord.waistline = Convert.ToInt32(waistlineEditText.Text);
+                activeRecord.SBP = Convert.ToInt32(SBPEditText.Text);
+                activeRecord.DBP = Convert.ToInt32(DBPEditText.Text);
+                activeRecord.diets.Clear();
+                for (int i = 0; i < dietPanels.Count; ++i)
+                        activeRecord.diets.Add(new Diet(dietPanels[i].meal, dietPanels[i].diet, dietPanels[i].calorie));
+
+                activeRecord.exercises.Clear();
+                foreach (int index in exerciseCheckBox.CheckedIndices)
+                    activeRecord.exercises.Add(new Exercise(index + 1, "", "", 0, 0));
+                activeRecord.update();
+                calendarTabControl.SelectedTab = recordViewPage;
+            }
         }
         private void cancelRecordButton_Click(object sender, EventArgs e)
         {
             calendarTabControl.SelectedTab = recordViewPage;
         }
 
+        private void addDietRecordButton_Click(object sender, EventArgs e)
+        {
+            DietPanel dp = new DietPanel(this, dietPanels.Count, recordEditDietLabel.Location.X, recordEditDietLabel.Location.Y + recordEditDietLabel.Height + 30);
+            dietPanels.Add(dp);
+            editPanel.Controls.Add(dp);
+        }
+
+        public void removeDietPanel(int index) {
+            DietPanel tmp = dietPanels[index];
+            dietPanels.RemoveAt(index);
+            tmp.Dispose();
+
+            for (int i = 0; i < dietPanels.Count; ++i)
+            {
+                dietPanels[i].setPosition(i);
+            }
+        }
+
+        private bool checkTextNotEmpty(TextBox t)
+        {
+            if (t.Text != "")
+            {
+                t.BackColor = Color.White;
+                return true;
+            }
+            else
+            {
+                t.BackColor = Color.LightCoral;
+                return false;
+            }
+        }
     }
 }

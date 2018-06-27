@@ -61,6 +61,16 @@
             this.mealComboBox.Name = "mealComboBox";
             this.mealComboBox.Size = new System.Drawing.Size(181, 28);
             this.mealComboBox.TabIndex = 1;
+            this.mealComboBox.SelectedIndexChanged += new System.EventHandler(this.mealComboBox_SelectedIndexChanged);
+            // 
+            // calorieText
+            // 
+            this.calorieText.Font = new System.Drawing.Font("PMingLiU", 12F);
+            this.calorieText.Location = new System.Drawing.Point(118, 41);
+            this.calorieText.Name = "calorieText";
+            this.calorieText.Size = new System.Drawing.Size(181, 31);
+            this.calorieText.TabIndex = 2;
+            this.calorieText.TextChanged += new System.EventHandler(this.calorieText_TextChanged);
             // 
             // calorieLabel
             // 
@@ -71,14 +81,6 @@
             this.calorieLabel.Size = new System.Drawing.Size(109, 20);
             this.calorieLabel.TabIndex = 0;
             this.calorieLabel.Text = "攝取熱量：";
-            // 
-            // calorieText
-            // 
-            this.calorieText.Font = new System.Drawing.Font("PMingLiU", 12F);
-            this.calorieText.Location = new System.Drawing.Point(118, 41);
-            this.calorieText.Name = "calorieText";
-            this.calorieText.Size = new System.Drawing.Size(181, 31);
-            this.calorieText.TabIndex = 2;
             // 
             // kcalLabel
             // 
@@ -108,6 +110,7 @@
             this.dietText.Name = "dietText";
             this.dietText.Size = new System.Drawing.Size(402, 229);
             this.dietText.TabIndex = 3;
+            this.dietText.TextChanged += new System.EventHandler(this.dietText_TextChanged);
             // 
             // deleteButton
             // 
@@ -117,11 +120,14 @@
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "-";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // DietPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.mealComboBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.kcalLabel);
@@ -131,7 +137,7 @@
             this.Controls.Add(this.calorieLabel);
             this.Controls.Add(this.mealLabel);
             this.Name = "DietPanel";
-            this.Size = new System.Drawing.Size(416, 349);
+            this.Size = new System.Drawing.Size(418, 347);
             this.ResumeLayout(false);
             this.PerformLayout();
 
