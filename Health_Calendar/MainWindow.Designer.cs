@@ -33,6 +33,10 @@ namespace Health_Calendar
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.mainPage = new System.Windows.Forms.TabPage();
             this.calendarTabControl = new System.Windows.Forms.TabControl();
@@ -47,6 +51,8 @@ namespace Health_Calendar
             this.satLabel = new System.Windows.Forms.Label();
             this.recordViewPage = new System.Windows.Forms.TabPage();
             this.recordViewPanel = new System.Windows.Forms.Panel();
+            this.dtLabel = new System.Windows.Forms.Label();
+            this.etLabel = new System.Windows.Forms.Label();
             this.editViewButton = new System.Windows.Forms.Button();
             this.backViewButton = new System.Windows.Forms.Button();
             this.BMIViewLabel = new System.Windows.Forms.Label();
@@ -81,10 +87,11 @@ namespace Health_Calendar
             this.weightEditLabel = new System.Windows.Forms.Label();
             this.SBPEditLabel = new System.Windows.Forms.Label();
             this.summaryPage = new System.Windows.Forms.TabPage();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.summaryTitle = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.excriseChartbutton = new System.Windows.Forms.Button();
+            this.caloriebutton = new System.Windows.Forms.Button();
+            this.weightbutton = new System.Windows.Forms.Button();
             this.settingsPage = new System.Windows.Forms.TabPage();
             this.settingPanel = new System.Windows.Forms.Panel();
             this.settingPageTitleLabel = new System.Windows.Forms.Label();
@@ -99,16 +106,16 @@ namespace Health_Calendar
             this.MinuteSetCombo = new System.Windows.Forms.ComboBox();
             this.HourSetCombo = new System.Windows.Forms.ComboBox();
             this.TimeSetLabel = new System.Windows.Forms.Label();
-            this.OlderText = new System.Windows.Forms.TextBox();
             this.HeightText = new System.Windows.Forms.TextBox();
             this.StartDateCombo = new System.Windows.Forms.ComboBox();
             this.PermissionLabel = new System.Windows.Forms.Label();
-            this.yearLabel = new System.Windows.Forms.Label();
             this.mLabel = new System.Windows.Forms.Label();
-            this.OlderLabel = new System.Windows.Forms.Label();
             this.HeightLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.todayLabel = new System.Windows.Forms.Label();
+            this.lastmonthButton = new System.Windows.Forms.Button();
+            this.nextmonthButton = new System.Windows.Forms.Button();
+            this.thismonthLabel = new System.Windows.Forms.Label();
             this.mainTabControl.SuspendLayout();
             this.mainPage.SuspendLayout();
             this.calendarTabControl.SuspendLayout();
@@ -117,8 +124,9 @@ namespace Health_Calendar
             this.recordViewPage.SuspendLayout();
             this.recordViewPanel.SuspendLayout();
             this.recordEditPage.SuspendLayout();
-            this.summaryPage.SuspendLayout();
             this.editPanel.SuspendLayout();
+            this.summaryPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.settingsPage.SuspendLayout();
             this.settingPanel.SuspendLayout();
             this.PermissionPanel.SuspendLayout();
@@ -167,7 +175,7 @@ namespace Health_Calendar
             // 
             // calendarPage
             // 
-            this.calendarPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b7;
+            this.calendarPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("calendarPage.BackgroundImage")));
             this.calendarPage.Controls.Add(this.panel8);
             this.calendarPage.Controls.Add(this.satLabel);
             this.calendarPage.Location = new System.Drawing.Point(4, 28);
@@ -265,7 +273,7 @@ namespace Health_Calendar
             // recordViewPage
             // 
             this.recordViewPage.AutoScroll = true;
-            this.recordViewPage.BackgroundImage = global::Health_Calendar.Properties.Resources.date4;
+            this.recordViewPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordViewPage.BackgroundImage")));
             this.recordViewPage.Controls.Add(this.recordViewPanel);
             this.recordViewPage.Location = new System.Drawing.Point(4, 28);
             this.recordViewPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -280,6 +288,8 @@ namespace Health_Calendar
             // recordViewPanel
             // 
             this.recordViewPanel.AutoScroll = true;
+            this.recordViewPanel.Controls.Add(this.dtLabel);
+            this.recordViewPanel.Controls.Add(this.etLabel);
             this.recordViewPanel.Controls.Add(this.editViewButton);
             this.recordViewPanel.Controls.Add(this.backViewButton);
             this.recordViewPanel.Controls.Add(this.BMIViewLabel);
@@ -290,11 +300,29 @@ namespace Health_Calendar
             this.recordViewPanel.Controls.Add(this.dateViewLabel);
             this.recordViewPanel.Controls.Add(this.label19);
             this.recordViewPanel.Controls.Add(this.weightViewLabel);
-            this.recordViewPanel.Location = new System.Drawing.Point(40, 36);
+            this.recordViewPanel.Location = new System.Drawing.Point(40, 32);
             this.recordViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordViewPanel.Name = "recordViewPanel";
-            this.recordViewPanel.Size = new System.Drawing.Size(810, 574);
+            this.recordViewPanel.Size = new System.Drawing.Size(863, 574);
             this.recordViewPanel.TabIndex = 1;
+            // 
+            // dtLabel
+            // 
+            this.dtLabel.AutoSize = true;
+            this.dtLabel.Location = new System.Drawing.Point(71, 398);
+            this.dtLabel.Name = "dtLabel";
+            this.dtLabel.Size = new System.Drawing.Size(85, 18);
+            this.dtLabel.TabIndex = 17;
+            this.dtLabel.Text = "今日飲食:";
+            // 
+            // etLabel
+            // 
+            this.etLabel.AutoSize = true;
+            this.etLabel.Location = new System.Drawing.Point(68, 376);
+            this.etLabel.Name = "etLabel";
+            this.etLabel.Size = new System.Drawing.Size(85, 18);
+            this.etLabel.TabIndex = 16;
+            this.etLabel.Text = "今日運動:";
             // 
             // editViewButton
             // 
@@ -401,8 +429,7 @@ namespace Health_Calendar
             // recordEditPage
             // 
             this.recordEditPage.AutoScroll = true;
-            this.recordEditPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b3;
-            this.recordEditPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.recordEditPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordEditPage.BackgroundImage")));
             this.recordEditPage.Controls.Add(this.editPanel);
             this.recordEditPage.Location = new System.Drawing.Point(4, 28);
             this.recordEditPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -442,7 +469,7 @@ namespace Health_Calendar
             this.editPanel.Location = new System.Drawing.Point(3, 0);
             this.editPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editPanel.Name = "editPanel";
-            this.editPanel.Size = new System.Drawing.Size(745, 665);
+            this.editPanel.Size = new System.Drawing.Size(903, 665);
             this.editPanel.TabIndex = 14;
             // 
             // addDietRecordButton
@@ -655,11 +682,15 @@ namespace Health_Calendar
             // 
             // summaryPage
             // 
-            this.summaryPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b3;
+            this.summaryPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("summaryPage.BackgroundImage")));
+            this.summaryPage.Controls.Add(this.thismonthLabel);
+            this.summaryPage.Controls.Add(this.nextmonthButton);
+            this.summaryPage.Controls.Add(this.lastmonthButton);
+            this.summaryPage.Controls.Add(this.chart);
             this.summaryPage.Controls.Add(this.summaryTitle);
-            this.summaryPage.Controls.Add(this.button3);
-            this.summaryPage.Controls.Add(this.button2);
-            this.summaryPage.Controls.Add(this.button1);
+            this.summaryPage.Controls.Add(this.excriseChartbutton);
+            this.summaryPage.Controls.Add(this.caloriebutton);
+            this.summaryPage.Controls.Add(this.weightbutton);
             this.summaryPage.Location = new System.Drawing.Point(28, 4);
             this.summaryPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.summaryPage.Name = "summaryPage";
@@ -668,6 +699,23 @@ namespace Health_Calendar
             this.summaryPage.TabIndex = 1;
             this.summaryPage.Text = "統計";
             this.summaryPage.UseVisualStyleBackColor = true;
+            this.summaryPage.Enter += new System.EventHandler(this.summaryPage_Enter);
+            // 
+            // chart
+            // 
+            this.chart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(80, 184);
+            this.chart.Name = "chart";
+            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            this.chart.Size = new System.Drawing.Size(843, 422);
+            this.chart.TabIndex = 4;
+            this.chart.Text = "chart1";
+            title1.Name = "體重折線圖";
+            this.chart.Titles.Add(title1);
             // 
             // summaryTitle
             // 
@@ -678,37 +726,43 @@ namespace Health_Calendar
             this.summaryTitle.TabIndex = 3;
             this.summaryTitle.Text = "統計圖";
             // 
-            // button3
+            // excriseChartbutton
             // 
-            this.button3.Location = new System.Drawing.Point(714, 111);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "運動";
-            this.button3.UseVisualStyleBackColor = true;
+            this.excriseChartbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.excriseChartbutton.Location = new System.Drawing.Point(612, 119);
+            this.excriseChartbutton.Name = "excriseChartbutton";
+            this.excriseChartbutton.Size = new System.Drawing.Size(98, 40);
+            this.excriseChartbutton.TabIndex = 2;
+            this.excriseChartbutton.Text = "運動";
+            this.excriseChartbutton.UseVisualStyleBackColor = false;
+            this.excriseChartbutton.Click += new System.EventHandler(this.excriseChartbutton_Click);
             // 
-            // button2
+            // caloriebutton
             // 
-            this.button2.Location = new System.Drawing.Point(398, 111);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "卡路里攝取";
-            this.button2.UseVisualStyleBackColor = true;
+            this.caloriebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.caloriebutton.Location = new System.Drawing.Point(397, 119);
+            this.caloriebutton.Name = "caloriebutton";
+            this.caloriebutton.Size = new System.Drawing.Size(124, 40);
+            this.caloriebutton.TabIndex = 1;
+            this.caloriebutton.Text = "卡路里攝取";
+            this.caloriebutton.UseVisualStyleBackColor = false;
+            this.caloriebutton.Click += new System.EventHandler(this.caloriebutton_Click);
             // 
-            // button1
+            // weightbutton
             // 
-            this.button1.Location = new System.Drawing.Point(101, 109);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "體重變化";
-            this.button1.UseVisualStyleBackColor = true;
+            this.weightbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.weightbutton.Location = new System.Drawing.Point(207, 119);
+            this.weightbutton.Name = "weightbutton";
+            this.weightbutton.Size = new System.Drawing.Size(106, 42);
+            this.weightbutton.TabIndex = 0;
+            this.weightbutton.Text = "體重變化";
+            this.weightbutton.UseVisualStyleBackColor = false;
+            this.weightbutton.Click += new System.EventHandler(this.weightbutton_Click);
             // 
             // settingsPage
             // 
             this.settingsPage.AutoScroll = true;
-            this.settingsPage.BackgroundImage = global::Health_Calendar.Properties.Resources.b3;
+            this.settingsPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settingsPage.BackgroundImage")));
             this.settingsPage.Controls.Add(this.settingPanel);
             this.settingsPage.Location = new System.Drawing.Point(28, 4);
             this.settingsPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -729,13 +783,10 @@ namespace Health_Calendar
             this.settingPanel.Controls.Add(this.StartDateLabel);
             this.settingPanel.Controls.Add(this.settingExerciseTitleLabel);
             this.settingPanel.Controls.Add(this.PermissionPanel);
-            this.settingPanel.Controls.Add(this.OlderText);
             this.settingPanel.Controls.Add(this.HeightText);
             this.settingPanel.Controls.Add(this.StartDateCombo);
             this.settingPanel.Controls.Add(this.PermissionLabel);
-            this.settingPanel.Controls.Add(this.yearLabel);
             this.settingPanel.Controls.Add(this.mLabel);
-            this.settingPanel.Controls.Add(this.OlderLabel);
             this.settingPanel.Controls.Add(this.HeightLabel);
             this.settingPanel.Location = new System.Drawing.Point(19, 24);
             this.settingPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -755,7 +806,7 @@ namespace Health_Calendar
             // 
             // CheckSettingbutton
             // 
-            this.CheckSettingbutton.BackgroundImage = global::Health_Calendar.Properties.Resources.b2;
+            this.CheckSettingbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CheckSettingbutton.BackgroundImage")));
             this.CheckSettingbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckSettingbutton.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.CheckSettingbutton.Location = new System.Drawing.Point(717, 650);
@@ -792,7 +843,7 @@ namespace Health_Calendar
             // 
             // addSettingExerciseButton
             // 
-            this.addSettingExerciseButton.BackgroundImage = global::Health_Calendar.Properties.Resources.b2;
+            this.addSettingExerciseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("addSettingExerciseButton.BackgroundImage")));
             this.addSettingExerciseButton.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.addSettingExerciseButton.Location = new System.Drawing.Point(402, 505);
             this.addSettingExerciseButton.Name = "addSettingExerciseButton";
@@ -806,7 +857,7 @@ namespace Health_Calendar
             this.StartDateLabel.AutoSize = true;
             this.StartDateLabel.BackColor = System.Drawing.Color.Transparent;
             this.StartDateLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.StartDateLabel.Location = new System.Drawing.Point(123, 65);
+            this.StartDateLabel.Location = new System.Drawing.Point(123, 77);
             this.StartDateLabel.Name = "StartDateLabel";
             this.StartDateLabel.Size = new System.Drawing.Size(319, 56);
             this.StartDateLabel.TabIndex = 0;
@@ -963,19 +1014,10 @@ namespace Health_Calendar
             this.TimeSetLabel.TabIndex = 0;
             this.TimeSetLabel.Text = "提醒時間:";
             // 
-            // OlderText
-            // 
-            this.OlderText.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.OlderText.Location = new System.Drawing.Point(292, 196);
-            this.OlderText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.OlderText.Name = "OlderText";
-            this.OlderText.Size = new System.Drawing.Size(100, 55);
-            this.OlderText.TabIndex = 8;
-            // 
             // HeightText
             // 
             this.HeightText.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HeightText.Location = new System.Drawing.Point(292, 121);
+            this.HeightText.Location = new System.Drawing.Point(287, 164);
             this.HeightText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HeightText.Name = "HeightText";
             this.HeightText.Size = new System.Drawing.Size(100, 55);
@@ -985,7 +1027,7 @@ namespace Health_Calendar
             // 
             this.StartDateCombo.Font = new System.Drawing.Font("華康秀風體W3(P)", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.StartDateCombo.FormattingEnabled = true;
-            this.StartDateCombo.Location = new System.Drawing.Point(447, 65);
+            this.StartDateCombo.Location = new System.Drawing.Point(448, 77);
             this.StartDateCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StartDateCombo.Name = "StartDateCombo";
             this.StartDateCombo.Size = new System.Drawing.Size(77, 56);
@@ -1002,45 +1044,23 @@ namespace Health_Calendar
             this.PermissionLabel.TabIndex = 5;
             this.PermissionLabel.Text = "是否發出推播通知?";
             // 
-            // yearLabel
-            // 
-            this.yearLabel.AutoSize = true;
-            this.yearLabel.BackColor = System.Drawing.Color.Transparent;
-            this.yearLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.yearLabel.Location = new System.Drawing.Point(420, 204);
-            this.yearLabel.Name = "yearLabel";
-            this.yearLabel.Size = new System.Drawing.Size(65, 44);
-            this.yearLabel.TabIndex = 4;
-            this.yearLabel.Text = "歲";
-            // 
             // mLabel
             // 
             this.mLabel.AutoSize = true;
             this.mLabel.BackColor = System.Drawing.Color.Transparent;
             this.mLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.mLabel.Location = new System.Drawing.Point(431, 133);
+            this.mLabel.Location = new System.Drawing.Point(406, 174);
             this.mLabel.Name = "mLabel";
             this.mLabel.Size = new System.Drawing.Size(41, 44);
             this.mLabel.TabIndex = 3;
             this.mLabel.Text = "m";
-            // 
-            // OlderLabel
-            // 
-            this.OlderLabel.AutoSize = true;
-            this.OlderLabel.BackColor = System.Drawing.Color.Transparent;
-            this.OlderLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.OlderLabel.Location = new System.Drawing.Point(123, 192);
-            this.OlderLabel.Name = "OlderLabel";
-            this.OlderLabel.Size = new System.Drawing.Size(148, 56);
-            this.OlderLabel.TabIndex = 2;
-            this.OlderLabel.Text = "年齡:";
             // 
             // HeightLabel
             // 
             this.HeightLabel.AutoSize = true;
             this.HeightLabel.BackColor = System.Drawing.Color.Transparent;
             this.HeightLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HeightLabel.Location = new System.Drawing.Point(123, 121);
+            this.HeightLabel.Location = new System.Drawing.Point(123, 164);
             this.HeightLabel.Name = "HeightLabel";
             this.HeightLabel.Size = new System.Drawing.Size(148, 56);
             this.HeightLabel.TabIndex = 1;
@@ -1055,6 +1075,33 @@ namespace Health_Calendar
             this.todayLabel.Size = new System.Drawing.Size(50, 18);
             this.todayLabel.TabIndex = 20;
             this.todayLabel.Text = "label3";
+            // 
+            // lastmonthButton
+            // 
+            this.lastmonthButton.Location = new System.Drawing.Point(667, 24);
+            this.lastmonthButton.Name = "lastmonthButton";
+            this.lastmonthButton.Size = new System.Drawing.Size(89, 39);
+            this.lastmonthButton.TabIndex = 5;
+            this.lastmonthButton.Text = "上月";
+            this.lastmonthButton.UseVisualStyleBackColor = true;
+            // 
+            // nextmonthButton
+            // 
+            this.nextmonthButton.Location = new System.Drawing.Point(848, 24);
+            this.nextmonthButton.Name = "nextmonthButton";
+            this.nextmonthButton.Size = new System.Drawing.Size(85, 39);
+            this.nextmonthButton.TabIndex = 6;
+            this.nextmonthButton.Text = "下月";
+            this.nextmonthButton.UseVisualStyleBackColor = true;
+            // 
+            // thismonthLabel
+            // 
+            this.thismonthLabel.AutoSize = true;
+            this.thismonthLabel.Location = new System.Drawing.Point(776, 34);
+            this.thismonthLabel.Name = "thismonthLabel";
+            this.thismonthLabel.Size = new System.Drawing.Size(50, 18);
+            this.thismonthLabel.TabIndex = 7;
+            this.thismonthLabel.Text = "label3";
             // 
             // MainWindow
             // 
@@ -1081,10 +1128,12 @@ namespace Health_Calendar
             this.recordViewPanel.ResumeLayout(false);
             this.recordViewPanel.PerformLayout();
             this.recordEditPage.ResumeLayout(false);
+            this.recordEditPage.PerformLayout();
             this.editPanel.ResumeLayout(false);
             this.editPanel.PerformLayout();
             this.summaryPage.ResumeLayout(false);
             this.summaryPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.settingsPage.ResumeLayout(false);
             this.settingPanel.ResumeLayout(false);
             this.settingPanel.PerformLayout();
@@ -1136,13 +1185,10 @@ namespace Health_Calendar
         private System.Windows.Forms.ComboBox MinuteSetCombo;
         private System.Windows.Forms.ComboBox HourSetCombo;
         private System.Windows.Forms.Label TimeSetLabel;
-        private System.Windows.Forms.TextBox OlderText;
         private System.Windows.Forms.TextBox HeightText;
         private System.Windows.Forms.ComboBox StartDateCombo;
         private System.Windows.Forms.Label PermissionLabel;
-        private System.Windows.Forms.Label yearLabel;
         private System.Windows.Forms.Label mLabel;
-        private System.Windows.Forms.Label OlderLabel;
         private System.Windows.Forms.Label HeightLabel;
         private System.Windows.Forms.Label StartDateLabel;
         private System.Windows.Forms.Label settingExerciseTitleLabel;
@@ -1168,10 +1214,16 @@ namespace Health_Calendar
         private System.Windows.Forms.Button addDietRecordButton;
         private System.Windows.Forms.Label settingPageTitleLabel;
         private Label summaryTitle;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button excriseChartbutton;
+        private Button caloriebutton;
+        private Button weightbutton;
         private Label todayLabel;
+        private Label etLabel;
+        private Label dtLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private Label thismonthLabel;
+        private Button nextmonthButton;
+        private Button lastmonthButton;
     }
 }
 

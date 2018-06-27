@@ -38,7 +38,7 @@
             // 
             this.titleViewLabel.AutoSize = true;
             this.titleViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.titleViewLabel.Location = new System.Drawing.Point(30, 25);
+            this.titleViewLabel.Location = new System.Drawing.Point(2, 13);
             this.titleViewLabel.Name = "titleViewLabel";
             this.titleViewLabel.Size = new System.Drawing.Size(104, 40);
             this.titleViewLabel.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             this.TimeLengthLabel.AutoSize = true;
             this.TimeLengthLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.TimeLengthLabel.Location = new System.Drawing.Point(31, 82);
+            this.TimeLengthLabel.Location = new System.Drawing.Point(3, 53);
             this.TimeLengthLabel.Name = "TimeLengthLabel";
             this.TimeLengthLabel.Size = new System.Drawing.Size(84, 32);
             this.TimeLengthLabel.TabIndex = 1;
@@ -57,8 +57,9 @@
             // detailViewLabel
             // 
             this.detailViewLabel.AutoSize = true;
+            this.detailViewLabel.BackColor = System.Drawing.Color.Transparent;
             this.detailViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.detailViewLabel.Location = new System.Drawing.Point(31, 175);
+            this.detailViewLabel.Location = new System.Drawing.Point(3, 117);
             this.detailViewLabel.Name = "detailViewLabel";
             this.detailViewLabel.Size = new System.Drawing.Size(84, 32);
             this.detailViewLabel.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             this.kcalViewLabel.AutoSize = true;
             this.kcalViewLabel.Font = new System.Drawing.Font("華康秀風體W3(P)", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.kcalViewLabel.Location = new System.Drawing.Point(31, 129);
+            this.kcalViewLabel.Location = new System.Drawing.Point(3, 85);
             this.kcalViewLabel.Name = "kcalViewLabel";
             this.kcalViewLabel.Size = new System.Drawing.Size(180, 32);
             this.kcalViewLabel.TabIndex = 3;
@@ -78,13 +79,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.kcalViewLabel);
             this.Controls.Add(this.detailViewLabel);
             this.Controls.Add(this.TimeLengthLabel);
             this.Controls.Add(this.titleViewLabel);
             this.Name = "ExerciseViewPanel";
-            this.Size = new System.Drawing.Size(398, 242);
+            this.Size = new System.Drawing.Size(200, 200);
             this.ResumeLayout(false);
             this.PerformLayout();
 

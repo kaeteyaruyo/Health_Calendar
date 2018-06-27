@@ -36,16 +36,17 @@
             // mealViewLabel
             // 
             this.mealViewLabel.AutoSize = true;
-            this.mealViewLabel.Location = new System.Drawing.Point(37, 30);
+            this.mealViewLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.mealViewLabel.Location = new System.Drawing.Point(3, 10);
             this.mealViewLabel.Name = "mealViewLabel";
-            this.mealViewLabel.Size = new System.Drawing.Size(42, 18);
+            this.mealViewLabel.Size = new System.Drawing.Size(46, 18);
             this.mealViewLabel.TabIndex = 0;
             this.mealViewLabel.Text = "meal";
             // 
             // calorieViewLabel
             // 
             this.calorieViewLabel.AutoSize = true;
-            this.calorieViewLabel.Location = new System.Drawing.Point(37, 78);
+            this.calorieViewLabel.Location = new System.Drawing.Point(3, 38);
             this.calorieViewLabel.Name = "calorieViewLabel";
             this.calorieViewLabel.Size = new System.Drawing.Size(85, 18);
             this.calorieViewLabel.TabIndex = 1;
@@ -54,7 +55,7 @@
             // detailViewLabel
             // 
             this.detailViewLabel.AutoSize = true;
-            this.detailViewLabel.Location = new System.Drawing.Point(37, 116);
+            this.detailViewLabel.Location = new System.Drawing.Point(3, 70);
             this.detailViewLabel.Name = "detailViewLabel";
             this.detailViewLabel.Size = new System.Drawing.Size(49, 18);
             this.detailViewLabel.TabIndex = 2;
@@ -68,7 +69,7 @@
             this.Controls.Add(this.calorieViewLabel);
             this.Controls.Add(this.mealViewLabel);
             this.Name = "DietView";
-            this.Size = new System.Drawing.Size(356, 292);
+            this.Size = new System.Drawing.Size(200, 200);
             this.ResumeLayout(false);
             this.PerformLayout();
 

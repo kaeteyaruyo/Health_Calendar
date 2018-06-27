@@ -128,8 +128,8 @@
             // 
             // DietPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+           // this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+           // this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.mealComboBox);

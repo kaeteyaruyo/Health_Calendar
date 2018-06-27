@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Health_Calendar
 {
@@ -17,6 +18,13 @@ namespace Health_Calendar
         private DailyRecord activeRecord;
         public static PrivateFontCollection fonts;
         private List<DietPanel> dietPanels = new List<DietPanel>();
+        Series weight = new Series("體重", 200);
+        Series timelenght = new Series("運動時長", 500);
+        Series calorieSeries1 = new Series("攝入卡路里", 4000);
+        Series calorieSeries2 = new Series("消耗卡路里", 4000);
+
+
+
         public MainWindow()
         {
             
@@ -39,7 +47,8 @@ namespace Health_Calendar
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-           
+            
+
             mainTabControl.Size = new Size(720, 455);
             mainTabControl.ItemSize = new Size(150, 25);
             mainTabControl.Location = new Point((this.Size.Width - mainTabControl.Size.Width)/2 - 15, (this.Size.Height - mainTabControl.Size.Height) / 2);
@@ -96,16 +105,25 @@ namespace Health_Calendar
             this.MinuteSetCombo.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HourSetCombo.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.TimeSetLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.OlderText.Font = new System.Drawing.Font(fonts.Families[0], 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+          
             this.HeightText.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.StartDateCombo.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.PermissionLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.yearLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+           
             this.mLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.OlderLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            
             this.HeightLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.excriseChartbutton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.weightbutton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.caloriebutton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 
             this.summaryTitle.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.etLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.thismonthLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lastmonthButton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.nextmonthButton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+
+
             mainTabControl.Font=new Font(fonts.Families[0], 15, System.Drawing.FontStyle.Bold);
 
 
@@ -176,13 +194,37 @@ namespace Health_Calendar
             SBPViewLabel.Text = "收縮壓： " + activeRecord.SBP + " mmHg";
             DBPViewLabel.Text = "舒張壓： " + activeRecord.DBP + " mmHg";
             BMIViewLabel.Text = "BMI： " + activeRecord.BMI;
-            
+            int num=0;
+            int x = 55; int y = 300;
             foreach (Exercise ex in activeRecord.exercises)
             {
+                
                 ExerciseViewPanel exx = new ExerciseViewPanel();
                 exx.EditExercise(ex.title,ex.calorie,ex.detail,ex.timeLength);
                 recordViewPanel.Controls.Add(exx);
-                break;
+                y = y + num * 200;
+                exx.Location=new Point(x, y );
+                exx.Font = new Font(fonts.Families[0], 20);
+                num++;
+                
+            }
+            y = y + 250;
+           
+            dtLabel.Font = new Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold);
+            dtLabel.Location = new Point(x, y);
+            
+            y += 50;num = 0;
+            foreach (Diet dt in activeRecord.diets)
+            {
+
+                DietView d = new DietView();
+                d.DietEdit(dt.meal, dt.calorie, dt.diet);
+                recordViewPanel.Controls.Add(d);
+                y = y + num * 200;
+                d.Font = new Font(fonts.Families[0], 20);
+                d.Location = new Point(x, y);
+                num++;
+                
             }
 
         }
@@ -327,6 +369,81 @@ namespace Health_Calendar
                 t.BackColor = Color.LightCoral;
                 return false;
             }
+        }
+       
+
+        private void weightbutton_Click(object sender, EventArgs e)
+        {
+
+
+            chart.Series.Remove(timelenght);
+            chart.Series.Remove(weight);
+            chart.Series.Remove(calorieSeries1);
+            chart.Series.Remove(calorieSeries2);
+
+          
+            chart.Series.Add(weight);
+
+
+        }
+
+        private void excriseChartbutton_Click(object sender, EventArgs e)
+        {
+            chart.Series.Remove(timelenght);
+            chart.Series.Remove(weight);
+            chart.Series.Remove(calorieSeries1);
+            chart.Series.Remove(calorieSeries2);
+
+           
+            chart.Series.Add(timelenght);
+           
+
+        }
+
+        private void caloriebutton_Click(object sender, EventArgs e)
+        {
+            chart.Series.Remove(timelenght);
+            chart.Series.Remove(weight);
+            chart.Series.Remove(calorieSeries1);
+            chart.Series.Remove(calorieSeries2);
+
+            chart.Series.Add(calorieSeries1);
+            chart.Series.Add(calorieSeries2);
+            
+
+        }
+
+        private void summaryPage_Enter(object sender, EventArgs e)
+        {
+            this.thismonthLabel.Text = DateTime.Today.Month.ToString() + "月";
+
+
+            weight = new Series("體重");
+            weight.Color = Color.Red;
+            weight.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            weight.ChartType = SeriesChartType.Line;
+            weight.IsValueShownAsLabel = true;
+            weight.Points.AddXY(2, 40);
+            chart.Series.Add(weight);
+
+           
+            timelenght.Color = Color.Red;
+            timelenght.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            timelenght.ChartType = SeriesChartType.Line;
+            timelenght.IsValueShownAsLabel = true;
+            timelenght.Points.AddXY(23, 60);
+
+            calorieSeries1.Color = Color.Red;
+            calorieSeries2.Color = Color.Blue;
+            calorieSeries1.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            calorieSeries2.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            calorieSeries1.ChartType = SeriesChartType.Bar;
+            calorieSeries2.ChartType = SeriesChartType.Bar;
+            calorieSeries1.IsValueShownAsLabel = true;
+            calorieSeries2.IsValueShownAsLabel = true;
+
+
+
         }
     }
 }

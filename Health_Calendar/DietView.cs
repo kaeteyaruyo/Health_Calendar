@@ -15,6 +15,15 @@ namespace Health_Calendar
         public DietView()
         {
             InitializeComponent();
+            Show();
+        }
+
+        public void DietEdit(String meal, int cal, String detail)
+        {
+            mealViewLabel.Text = meal;
+            calorieViewLabel.Text = "攝入" + cal.ToString() + "kcal";
+            detailViewLabel.Text = "*" + detail;
+
         }
     }
 }
