@@ -86,11 +86,6 @@
     <Compile Include="ExerciseViewPanel.Designer.cs">
       <DependentUpon>ExerciseViewPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="health_calendarDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>health_calendarDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +100,8 @@
     <Compile Include="DietView.Designer.cs">
       <DependentUpon>DietView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting.cs" />
+    <Compile Include="Summary.cs" />
     <EmbeddedResource Include="DateButton.resx">
       <DependentUpon>DateButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,17 +125,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="health_calendarDataSet.xsc">
-      <DependentUpon>health_calendarDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="health_calendarDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>health_calendarDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="health_calendarDataSet.xss">
-      <DependentUpon>health_calendarDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -199,10 +185,6 @@
   <ItemGroup>
     <Content Include="health_calendar.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="health_calendar_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>health_calendar.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

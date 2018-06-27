@@ -47,7 +47,44 @@ namespace Health_Calendar
                     MessageBox.Show(ex.Message, "Database Error");
                 }
             }
-
         }
+        public static void update()
+        {
+            using (SqlConnection database = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|health_calendar.mdf;Integrated Security=True"))
+            {
+                database.Open();
+                SqlCommand command = null;
+                try
+                {
+                    foreach (Exercise e in exerciseList)
+                    {
+                        command = new SqlCommand(
+                            "update plan_exercise set title = N'" + e.title
+                            + "', detail = N'" + e.detail
+                            + "', time_length = " + e.timeLength
+                            + ", calorie = " + e.calorie
+                            + " where exercise_id = " + e.id + "", database);
+                        if (command.ExecuteNonQuery() == 0)
+                        {
+                            command = new SqlCommand("insert into plan_exercise(title, time_length, detail, calorie) values(N'"
+                                + e.title + "', "
+                                + e.timeLength + ", N'"
+                                + e.detail + "', "
+                                + e.calorie + ")", database);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Database Error");
+                }
+                finally
+                {
+                    if (command != null) command.Dispose();
+                }
+            }
+        }
+
     }
 }

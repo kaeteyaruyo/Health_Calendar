@@ -64,11 +64,11 @@ namespace Health_Calendar
         {
             if (dietText.Text != "")
             {
-                calorieText.BackColor = Color.White;
+                dietText.BackColor = Color.White;
                 diet = dietText.Text;
             }
             else
-                calorieText.BackColor = Color.LightCoral;
+                dietText.BackColor = Color.LightCoral;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

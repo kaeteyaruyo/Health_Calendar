@@ -37,7 +37,6 @@
             this.kcalLabel = new System.Windows.Forms.Label();
             this.detailText = new System.Windows.Forms.TextBox();
             this.detailLabel = new System.Windows.Forms.Label();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.minuteLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -58,6 +57,7 @@
             this.titleText.Name = "titleText";
             this.titleText.Size = new System.Drawing.Size(181, 31);
             this.titleText.TabIndex = 1;
+            this.titleText.TextChanged += new System.EventHandler(this.titleText_TextChanged);
             // 
             // timeLengthText
             // 
@@ -66,6 +66,7 @@
             this.timeLengthText.Name = "timeLengthText";
             this.timeLengthText.Size = new System.Drawing.Size(181, 31);
             this.timeLengthText.TabIndex = 2;
+            this.timeLengthText.TextChanged += new System.EventHandler(this.timeLengthText_TextChanged);
             // 
             // timeLengthLabel
             // 
@@ -84,6 +85,7 @@
             this.calorieText.Name = "calorieText";
             this.calorieText.Size = new System.Drawing.Size(181, 31);
             this.calorieText.TabIndex = 3;
+            this.calorieText.TextChanged += new System.EventHandler(this.calorieText_TextChanged);
             // 
             // calorieLabel
             // 
@@ -113,6 +115,7 @@
             this.detailText.Name = "detailText";
             this.detailText.Size = new System.Drawing.Size(402, 229);
             this.detailText.TabIndex = 4;
+            this.detailText.TextChanged += new System.EventHandler(this.detailText_TextChanged);
             // 
             // detailLabel
             // 
@@ -123,15 +126,6 @@
             this.detailLabel.Size = new System.Drawing.Size(109, 20);
             this.detailLabel.TabIndex = 0;
             this.detailLabel.Text = "詳細內容：";
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(379, 4);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(30, 30);
-            this.deleteButton.TabIndex = 5;
-            this.deleteButton.Text = "-";
-            this.deleteButton.UseVisualStyleBackColor = true;
             // 
             // minuteLabel
             // 
@@ -145,13 +139,11 @@
             // 
             // ExercisePanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.minuteLabel);
             this.Controls.Add(this.timeLengthLabel);
             this.Controls.Add(this.titleText);
             this.Controls.Add(this.timeLengthText);
-            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.kcalLabel);
             this.Controls.Add(this.detailText);
             this.Controls.Add(this.detailLabel);
@@ -159,7 +151,7 @@
             this.Controls.Add(this.calorieLabel);
             this.Controls.Add(this.titleLabel);
             this.Name = "ExercisePanel";
-            this.Size = new System.Drawing.Size(416, 394);
+            this.Size = new System.Drawing.Size(414, 392);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,7 +165,6 @@
         private System.Windows.Forms.TextBox detailText;
         private System.Windows.Forms.Label detailLabel;
         private System.Windows.Forms.Label kcalLabel;
-        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.TextBox timeLengthText;
         private System.Windows.Forms.TextBox titleText;
         private System.Windows.Forms.Label timeLengthLabel;
