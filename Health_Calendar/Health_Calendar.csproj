@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DailyRecord.cs" />
-    <Compile Include="dateButton.cs">
+    <Compile Include="DateButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Diet.cs" />
@@ -101,7 +101,10 @@
       <DependentUpon>DietView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DateButton.resx">
-      <DependentUpon>dateButton.cs</DependentUpon>
+      <DependentUpon>DateButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DietPanel.resx">
+      <DependentUpon>DietPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DietView.resx">
       <DependentUpon>DietView.cs</DependentUpon>

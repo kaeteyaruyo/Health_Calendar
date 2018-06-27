@@ -106,7 +106,7 @@ namespace Health_Calendar
                     {
                         command = new SqlCommand("insert into daily_diet(date, meal, diet, calorie) values('"
                             + date.ToString("yyyy-MM-dd") + "', "
-                            + d.meal_id + ", '"
+                            + d.meal_id + ", N'"
                             + d.diet.Replace("'", "''") + "', "
                             + d.calorie + ")", database);
                         command.ExecuteNonQuery();
