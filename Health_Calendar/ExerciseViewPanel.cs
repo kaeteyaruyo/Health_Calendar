@@ -15,6 +15,16 @@ namespace Health_Calendar
         public ExerciseViewPanel()
         {
             InitializeComponent();
+            Show();
         }
+        public void EditExercise(String title,int calorie,String detail,int time)
+        {
+            titleViewLabel.Text = title;
+            TimeLengthLabel.Text = "運動:"+time.ToString()+"min";
+            kcalViewLabel.Text = "消耗" + calorie.ToString() + "kcal";
+            detailViewLabel.Text = "*" + detail;
+         
+        }
+
     }
 }

@@ -47,9 +47,11 @@ namespace Health_Calendar
             mainTabControl.Location = new Point((this.Size.Width - mainTabControl.Size.Width)/2 - 15, (this.Size.Height - mainTabControl.Size.Height) / 2);
             calendarTabControl.Size = new Size(720, 455);
             calendarTabControl.Location = new Point(0, 0);
-            generate_calendar(2018, 6);
+            generate_calendar(DateTime.Today.Year, DateTime.Today.Month);
             calendarTabControl.ItemSize = new Size(0, 1);
             calendarTabControl.SizeMode = TabSizeMode.Fixed;
+            todayLabel.Text = "Today: "+DateTime.Today.Month.ToString()+"月"+DateTime.Today.Day+"日";
+            this.todayLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.sunLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tueLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.wedLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -70,7 +72,7 @@ namespace Health_Calendar
             this.label2.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cancelRecordButton.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.updateRecordButton.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.updateRecordButton.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmLabel.Font = new System.Drawing.Font(fonts.Families[0], 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.kgLabel.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.waistlineEditText.Font = new System.Drawing.Font(fonts.Families[0], 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -86,25 +88,27 @@ namespace Health_Calendar
             this.weightEditLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.SBPEditLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.settingPageTitleLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CheckSettingbutton.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CheckSettingbutton.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.NoradioButton.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.YesradioButton.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.addSettingExerciseButton.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.StartDateLabel.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.settingExerciseTitleLabel.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.addSettingExerciseButton.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.StartDateLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.settingExerciseTitleLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label39.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.MinuteSetCombo.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HourSetCombo.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.TimeSetLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.OlderText.Font = new System.Drawing.Font(fonts.Families[0], 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HeightText.Font = new System.Drawing.Font(fonts.Families[0], 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.StartDateCombo.Font = new System.Drawing.Font(fonts.Families[0], 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.PermissionLabel.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HeightText.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.StartDateCombo.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PermissionLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.yearLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.mLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.OlderLabel.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HeightLabel.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.OlderLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HeightLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 
+            this.summaryTitle.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            mainTabControl.Font=new Font(fonts.Families[0], 15, System.Drawing.FontStyle.Bold);
 
 
 
@@ -174,6 +178,15 @@ namespace Health_Calendar
             SBPViewLabel.Text = "收縮壓： " + activeRecord.SBP + " mmHg";
             DBPViewLabel.Text = "舒張壓： " + activeRecord.DBP + " mmHg";
             BMIViewLabel.Text = "BMI： " + activeRecord.BMI;
+            
+            foreach (Exercise ex in activeRecord.exercises)
+            {
+                ExerciseViewPanel exx = new ExerciseViewPanel();
+                exx.EditExercise(ex.title,ex.calorie,ex.detail,ex.timeLength);
+                recordViewPanel.Controls.Add(exx);
+                break;
+            }
+
         }
 
         private void recordViewPage_Leave(object sender, EventArgs e)
@@ -239,6 +252,19 @@ namespace Health_Calendar
             calendarTabControl.SelectedTab = recordViewPage;
         }
 
-        
+        private void YesradioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (YesradioButton.Checked == true)
+            { PermissionPanel.Visible = true; }
+            if (NoradioButton.Checked == true)
+            { PermissionPanel.Visible = false; }
+        }
+
+        private void addSettingExerciseButton_Click(object sender, EventArgs e)
+        {
+            ExercisePanel excrise1 = new ExercisePanel();
+            
+            
+        }
     }
 }
