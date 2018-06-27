@@ -18,10 +18,10 @@ namespace Health_Calendar
         private DailyRecord activeRecord;
         public static PrivateFontCollection fonts;
         private List<DietPanel> dietPanels = new List<DietPanel>();
-        Series weight = new Series("體重", 200);
-        Series timelenght = new Series("運動時長", 500);
-        Series calorieSeries1 = new Series("攝入卡路里", 4000);
-        Series calorieSeries2 = new Series("消耗卡路里", 4000);
+        Series weight = new Series("體重(kg)", 200);
+        Series timelenght = new Series("運動時長(min)", 500);
+        Series calorieSeries1 = new Series("攝入卡路里(kcal)", 4000);
+        Series calorieSeries2 = new Series("消耗卡路里(kcal)", 4000);
         private List<ExercisePanel> exercisePanels = new List<ExercisePanel>();
         private Setting setting = new Setting();
         public MainWindow()
@@ -111,8 +111,7 @@ namespace Health_Calendar
             this.summaryTitle.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.etLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.thismonthLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lastmonthButton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.nextmonthButton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            
 
 
             mainTabControl.Font=new Font(fonts.Families[0], 15, System.Drawing.FontStyle.Bold);
@@ -182,36 +181,36 @@ namespace Health_Calendar
             SBPViewLabel.Text = "收縮壓： " + activeRecord.SBP + " mmHg";
             DBPViewLabel.Text = "舒張壓： " + activeRecord.DBP + " mmHg";
             BMIViewLabel.Text = "BMI： " + activeRecord.BMI;
-            int num=0;
-            int x = 55; int y = 300;
+            
+            int x = 55; int y = 310;
             foreach (Exercise ex in activeRecord.exercises)
             {
                 
                 ExerciseViewPanel exx = new ExerciseViewPanel();
                 exx.EditExercise(ex.title,ex.calorie,ex.detail,ex.timeLength);
                 recordViewPanel.Controls.Add(exx);
-                y = y + num * 200;
+               
                 exx.Location=new Point(x, y );
                 exx.Font = new Font(fonts.Families[0], 20);
-                num++;
+                 y = y + 260;
                 
             }
-            y = y + 250;
+           
            
             dtLabel.Font = new Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold);
             dtLabel.Location = new Point(x, y);
             
-            y += 50;num = 0;
+            y =y+20;
             foreach (Diet dt in activeRecord.diets)
             {
 
                 DietView d = new DietView();
                 d.DietEdit(dt.meal, dt.calorie, dt.diet);
                 recordViewPanel.Controls.Add(d);
-                y = y + num * 200;
+               
                 d.Font = new Font(fonts.Families[0], 20);
                 d.Location = new Point(x, y);
-                num++;
+                 y = y +  180;
                 
             }
 
@@ -398,32 +397,45 @@ namespace Health_Calendar
         private void summaryPage_Enter(object sender, EventArgs e)
         {
             this.thismonthLabel.Text = DateTime.Today.Month.ToString() + "月";
-
+            Summary.selectWeight(DateTime.Today);
 
             weight = new Series("體重");
             weight.Color = Color.Red;
             weight.Font = new System.Drawing.Font(fonts.Families[0], 14);
             weight.ChartType = SeriesChartType.Line;
             weight.IsValueShownAsLabel = true;
-            weight.Points.AddXY(2, 40);
+            for (int i = 1; i < Summary.weightList.Count; ++i)
+            { weight.Points.AddXY(i, Summary.weightList[i]); }
             chart.Series.Add(weight);
 
-
+            Summary.selectTimeLength(DateTime.Today);
             timelenght.Color = Color.Red;
             timelenght.Font = new System.Drawing.Font(fonts.Families[0], 14);
             timelenght.ChartType = SeriesChartType.Line;
             timelenght.IsValueShownAsLabel = true;
-            timelenght.Points.AddXY(23, 60);
+            for (int i = 1; i < Summary.exerciseTimeLengthList.Count; ++i)
+            { timelenght.Points.AddXY(i, Summary.exerciseTimeLengthList[i]); }
+            
 
             calorieSeries1.Color = Color.Red;
             calorieSeries2.Color = Color.Blue;
             calorieSeries1.Font = new System.Drawing.Font(fonts.Families[0], 14);
             calorieSeries2.Font = new System.Drawing.Font(fonts.Families[0], 14);
-            calorieSeries1.ChartType = SeriesChartType.Bar;
-            calorieSeries2.ChartType = SeriesChartType.Bar;
+            calorieSeries1.ChartType = SeriesChartType.StackedColumn;
+            calorieSeries2.ChartType = SeriesChartType.StackedColumn;
             calorieSeries1.IsValueShownAsLabel = true;
             calorieSeries2.IsValueShownAsLabel = true;
+            Summary.selectInCalorie(DateTime.Today);
+            for (int i = 1; i < Summary.inCalorieList.Count; ++i)
+            { calorieSeries1.Points.AddXY(i, Summary.inCalorieList[i]); }
+            Summary.selectOutCalorie(DateTime.Today);
+            for (int i = 1; i < Summary.outCalorieList.Count; ++i)
+            { calorieSeries2.Points.AddXY(i, Summary.outCalorieList[i]); }
+
         }
+
+
+
 
         private bool checkComboBoxSelected(ComboBox c)
         {

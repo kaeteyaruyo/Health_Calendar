@@ -69,7 +69,7 @@
             this.Controls.Add(this.calorieViewLabel);
             this.Controls.Add(this.mealViewLabel);
             this.Name = "DietView";
-            this.Size = new System.Drawing.Size(200, 200);
+            this.Size = new System.Drawing.Size(200, 150);
             this.ResumeLayout(false);
             this.PerformLayout();
 
