@@ -1157,7 +1157,6 @@ namespace Health_Calendar
             this.notifyIcon.BalloonTipTitle = "Health Calendar";
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Health Calendar";
-            this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // MainWindow
