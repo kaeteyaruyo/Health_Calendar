@@ -15,17 +15,24 @@ namespace Health_Calendar
 {
     public partial class MainWindow : Form
     {
+        /********************
+         * Global Variables *
+         ********************/
         private System.Threading.Timer timer;
         private DateTime activeDate;
         private DailyRecord activeRecord;
         public static PrivateFontCollection fonts;
         private List<DietPanel> dietPanels = new List<DietPanel>();
-        Series weight = new Series("體重", 200);
-        Series timelenght = new Series("運動時長", 500);
-        Series calorieSeries1 = new Series("攝入卡路里", 4000);
-        Series calorieSeries2 = new Series("消耗卡路里", 4000);
+        Series weight = new Series("體重(kg)", 200);
+        Series timelenght = new Series("運動時長(min)", 500);
+        Series calorieSeries1 = new Series("攝入卡路里(kcal)", 4000);
+        Series calorieSeries2 = new Series("消耗卡路里(kcal)", 4000);
         private List<ExercisePanel> exercisePanels = new List<ExercisePanel>();
         private Setting setting = new Setting();
+
+        /***************
+         * Constructor *
+         ***************/
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +47,9 @@ namespace Health_Calendar
             Exercise.selectAllExercise();
         }
 
+        /*****************************
+         * MainWindow Event Handlers *
+         *****************************/
         private void MainWindow_Load(object sender, EventArgs e)
         {
             mainTabControl.Size = new Size(720, 455);
@@ -98,13 +108,10 @@ namespace Health_Calendar
             this.MinuteSetCombo.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HourSetCombo.Font = new System.Drawing.Font(fonts.Families[0], 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.TimeSetLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-          
             this.HeightText.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.StartDateCombo.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.PermissionLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-           
             this.mLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            
             this.HeightLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.excriseChartbutton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.weightbutton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -112,13 +119,29 @@ namespace Health_Calendar
             this.summaryTitle.Font = new System.Drawing.Font(fonts.Families[0], 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.etLabel.Font = new System.Drawing.Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.thismonthLabel.Font = new System.Drawing.Font(fonts.Families[0], 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lastmonthButton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.nextmonthButton.Font = new System.Drawing.Font(fonts.Families[0], 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-
-
             mainTabControl.Font=new Font(fonts.Families[0], 15, System.Drawing.FontStyle.Bold);
         }
 
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon.Visible = true;
+            }
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("你確定要關閉健康月曆嗎?（按最小化可背景執行）", "確定要離開?", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        /*******************************
+         * Tab Controls Event Handlers *
+         *******************************/
         private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -131,49 +154,6 @@ namespace Health_Calendar
             g.DrawString(text, mainTabControl.Font, Brushes.Black, rect, StrFormat);
         }
 
-        private void generate_calendar(int year, int month)
-        {
-            int[] W = new int[12] { 6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
-            int[] D = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-            int w = W[month - 1] + year + (year / 4) - (year / 100) + (year / 400);
-            int X = 25, Y = 60;
-            if (((year % 4) == 0) && (month < 3))
-            {
-                w--;
-                D[1]++;
-                if ((year % 100) == 0)
-                {
-                    w++;
-                    D[1]--;
-                }
-                if ((year % 400) == 0)
-                {
-                    w--;
-                    D[1]++;
-                }
-            }
-
-            for (int i = 1, j = 0; i <= D[month - 1]; i++)
-            {
-                DateButton dateBtn = new DateButton(X + 90 * ((w + i) % 7), Y + 70 * j, new DateTime(year, month, i), "");
-                dateBtn.Font = new Font(fonts.Families[0], 18, System.Drawing.FontStyle.Bold);
-                dateBtn.Click += (sender, e) => DateButton_Click(sender, e, dateBtn.date);
-                calendarPage.Controls.Add(dateBtn);
-                if ((w + i) % 7 == 6) j++;
-            }
-
-        }
-        public void DateButton_Click(object sender, EventArgs e, DateTime d)
-        {
-            activeDate = d;
-            if (DateTime.Compare(d, DateTime.Today) < 0)
-                calendarTabControl.SelectedTab = recordViewPage;
-            else if (DateTime.Compare(d, DateTime.Today) == 0)
-                calendarTabControl.SelectedTab = recordEditPage;
-            else
-                MessageBox.Show("還不能新增記錄喔~", "Future Date");
-        }
-
         private void recordViewPage_Enter(object sender, EventArgs e)
         {
             activeRecord = new DailyRecord(activeDate);
@@ -183,39 +163,31 @@ namespace Health_Calendar
             SBPViewLabel.Text = "收縮壓： " + activeRecord.SBP + " mmHg";
             DBPViewLabel.Text = "舒張壓： " + activeRecord.DBP + " mmHg";
             BMIViewLabel.Text = "BMI： " + activeRecord.BMI;
-            int num=0;
-            int x = 55; int y = 300;
+
+            int x = 55; int y = 310;
             foreach (Exercise ex in activeRecord.exercises)
             {
-                
                 ExerciseViewPanel exx = new ExerciseViewPanel();
-                exx.EditExercise(ex.title,ex.calorie,ex.detail,ex.timeLength);
+                exx.EditExercise(ex.title, ex.calorie, ex.detail, ex.timeLength);
                 recordViewPanel.Controls.Add(exx);
-                y = y + num * 200;
-                exx.Location=new Point(x, y );
+
+                exx.Location = new Point(x, y);
                 exx.Font = new Font(fonts.Families[0], 20);
-                num++;
-                
+                y = y + 260;
             }
-            y = y + 250;
-           
+
             dtLabel.Font = new Font(fonts.Families[0], 20F, System.Drawing.FontStyle.Bold);
             dtLabel.Location = new Point(x, y);
-            
-            y += 50;num = 0;
+            y = y + 20;
             foreach (Diet dt in activeRecord.diets)
             {
-
                 DietView d = new DietView();
                 d.DietEdit(dt.meal, dt.calorie, dt.diet);
                 recordViewPanel.Controls.Add(d);
-                y = y + num * 200;
                 d.Font = new Font(fonts.Families[0], 20);
                 d.Location = new Point(x, y);
-                num++;
-                
+                y = y + 180;
             }
-
         }
 
         private void recordViewPage_Leave(object sender, EventArgs e)
@@ -224,11 +196,53 @@ namespace Health_Calendar
                 activeRecord = null;
         }
 
+        private void summaryPage_Enter(object sender, EventArgs e)
+        {
+            this.thismonthLabel.Text = DateTime.Today.Month.ToString() + "月";
+            Summary.selectWeight(DateTime.Today);
+            weight = new Series("體重");
+            weight.Color = Color.Red;
+            weight.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            weight.ChartType = SeriesChartType.Line;
+            weight.IsValueShownAsLabel = true;
+            for (int i = 1; i < Summary.weightList.Count; ++i)
+            { weight.Points.AddXY(i, Summary.weightList[i]); }
+            chart.Series.Add(weight);
+
+            Summary.selectTimeLength(DateTime.Today);
+            timelenght.Color = Color.Red;
+            timelenght.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            timelenght.ChartType = SeriesChartType.Line;
+            timelenght.IsValueShownAsLabel = true;
+            for (int i = 1; i < Summary.exerciseTimeLengthList.Count; ++i)
+            { timelenght.Points.AddXY(i, Summary.exerciseTimeLengthList[i]); }
+
+            calorieSeries1.Color = Color.Red;
+            calorieSeries2.Color = Color.Blue;
+            calorieSeries1.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            calorieSeries2.Font = new System.Drawing.Font(fonts.Families[0], 14);
+            calorieSeries1.ChartType = SeriesChartType.StackedColumn;
+            calorieSeries2.ChartType = SeriesChartType.StackedColumn;
+            calorieSeries1.IsValueShownAsLabel = true;
+            calorieSeries2.IsValueShownAsLabel = true;
+            Summary.selectInCalorie(DateTime.Today);
+            for (int i = 1; i < Summary.inCalorieList.Count; ++i)
+            { calorieSeries1.Points.AddXY(i, Summary.inCalorieList[i]); }
+            Summary.selectOutCalorie(DateTime.Today);
+            for (int i = 1; i < Summary.outCalorieList.Count; ++i)
+            { calorieSeries2.Points.AddXY(i, Summary.outCalorieList[i]); }
+
+        }
+
+        private void summaryPage_Leave(object sender, EventArgs e)
+        {
+
+        }
+
         private void recordEditPage_Enter(object sender, EventArgs e)
         {
             activeRecord = new DailyRecord(activeDate);
             dateEditLabel.Text = activeDate.Month + " 月 " + activeDate.Day + " 日";
-
             if (activeRecord.modified)
             {
                 weightEditText.Text = activeRecord.weight.ToString();
@@ -243,7 +257,6 @@ namespace Health_Calendar
                 SBPEditText.Text = "0";
                 DBPEditText.Text = "0";
             }
-
             foreach (Diet d in activeRecord.diets)
             {
                 DietPanel dp = new DietPanel(this, dietPanels.Count, recordEditDietLabel.Location.X, recordEditDietLabel.Location.Y + recordEditDietLabel.Height + 30);
@@ -269,6 +282,49 @@ namespace Health_Calendar
             exerciseCheckBox.Items.Clear();
             for (int i = dietPanels.Count - 1; i >= 0; --i)
                 removeDietPanel(i);
+        }
+
+        private void settingsPage_Enter(object sender, EventArgs e)
+        {
+            StartDateCombo.SelectedIndex = setting.startDate - 1;
+            Console.WriteLine(setting.height.ToString());
+            HeightText.Text = setting.height.ToString();
+            if (setting.alarm)
+            {
+                YesradioButton.Checked = true;
+                HourSetCombo.SelectedIndex = setting.alarmHour;
+                MinuteSetCombo.SelectedIndex = setting.alarmMinute;
+            }
+            else
+                NoradioButton.Checked = true;
+            setPermissionPanel();
+            foreach (Exercise ex in Exercise.exerciseList)
+            {
+                ExercisePanel ep = new ExercisePanel(this, exercisePanels.Count, settingExerciseTitleLabel.Location.X, settingExerciseTitleLabel.Location.Y + settingExerciseTitleLabel.Height + 30);
+                ep.setData(ex.title, ex.timeLength, ex.calorie, ex.detail);
+                exercisePanels.Add(ep);
+                settingPanel.Controls.Add(ep);
+            }
+        }
+
+        private void settingsPage_Leave(object sender, EventArgs e)
+        {
+            for (int i = exercisePanels.Count - 1; i >= 0; --i)
+                removeExercisePanel(i);
+        }
+
+        /*******************************
+         * Button Click Event Handlers *
+         *******************************/
+        public void DateButton_Click(object sender, EventArgs e, DateTime d)
+        {
+            activeDate = d;
+            if (DateTime.Compare(d, DateTime.Today) < 0)
+                calendarTabControl.SelectedTab = recordViewPage;
+            else if (DateTime.Compare(d, DateTime.Today) == 0)
+                calendarTabControl.SelectedTab = recordEditPage;
+            else
+                MessageBox.Show("還不能新增記錄喔~", "Future Date");
         }
 
         private void backViewButton_Click(object sender, EventArgs e)
@@ -301,7 +357,7 @@ namespace Health_Calendar
                 activeRecord.DBP = Convert.ToInt32(DBPEditText.Text);
                 activeRecord.diets.Clear();
                 for (int i = 0; i < dietPanels.Count; ++i)
-                        activeRecord.diets.Add(new Diet(dietPanels[i].meal, dietPanels[i].diet, dietPanels[i].calorie));
+                    activeRecord.diets.Add(new Diet(dietPanels[i].meal, dietPanels[i].diet, dietPanels[i].calorie));
 
                 activeRecord.exercises.Clear();
                 foreach (int index in exerciseCheckBox.CheckedIndices)
@@ -310,19 +366,10 @@ namespace Health_Calendar
                 calendarTabControl.SelectedTab = recordViewPage;
             }
         }
+
         private void cancelRecordButton_Click(object sender, EventArgs e)
         {
             calendarTabControl.SelectedTab = recordViewPage;
-        }
-
-        private void YesradioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            setPermissionPanel();
-        }
-
-        private void NoradioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            setPermissionPanel();
         }
 
         private void addDietRecordButton_Click(object sender, EventArgs e)
@@ -332,42 +379,13 @@ namespace Health_Calendar
             editPanel.Controls.Add(dp);
         }
 
-        public void removeDietPanel(int index) {
-            DietPanel tmp = dietPanels[index];
-            dietPanels.RemoveAt(index);
-            tmp.Dispose();
-
-            for (int i = 0; i < dietPanels.Count; ++i)
-            {
-                dietPanels[i].setPosition(i);
-            }
-        }
-
-        private bool checkTextNotEmpty(TextBox t)
-        {
-            if (t.Text != "")
-            {
-                t.BackColor = Color.White;
-                return true;
-            }
-            else
-            {
-                t.BackColor = Color.LightCoral;
-                return false;
-            }
-        }       
-
         private void weightbutton_Click(object sender, EventArgs e)
         {
             chart.Series.Remove(timelenght);
             chart.Series.Remove(weight);
             chart.Series.Remove(calorieSeries1);
             chart.Series.Remove(calorieSeries2);
-
-          
             chart.Series.Add(weight);
-
-
         }
 
         private void excriseChartbutton_Click(object sender, EventArgs e)
@@ -376,11 +394,7 @@ namespace Health_Calendar
             chart.Series.Remove(weight);
             chart.Series.Remove(calorieSeries1);
             chart.Series.Remove(calorieSeries2);
-
-           
             chart.Series.Add(timelenght);
-           
-
         }
 
         private void caloriebutton_Click(object sender, EventArgs e)
@@ -389,118 +403,13 @@ namespace Health_Calendar
             chart.Series.Remove(weight);
             chart.Series.Remove(calorieSeries1);
             chart.Series.Remove(calorieSeries2);
-
             chart.Series.Add(calorieSeries1);
             chart.Series.Add(calorieSeries2);
-            
-
-        }
-
-        private void summaryPage_Enter(object sender, EventArgs e)
-        {
-            this.thismonthLabel.Text = DateTime.Today.Month.ToString() + "月";
-
-
-            weight = new Series("體重");
-            weight.Color = Color.Red;
-            weight.Font = new System.Drawing.Font(fonts.Families[0], 14);
-            weight.ChartType = SeriesChartType.Line;
-            weight.IsValueShownAsLabel = true;
-            weight.Points.AddXY(2, 40);
-            chart.Series.Add(weight);
-
-
-            timelenght.Color = Color.Red;
-            timelenght.Font = new System.Drawing.Font(fonts.Families[0], 14);
-            timelenght.ChartType = SeriesChartType.Line;
-            timelenght.IsValueShownAsLabel = true;
-            timelenght.Points.AddXY(23, 60);
-
-            calorieSeries1.Color = Color.Red;
-            calorieSeries2.Color = Color.Blue;
-            calorieSeries1.Font = new System.Drawing.Font(fonts.Families[0], 14);
-            calorieSeries2.Font = new System.Drawing.Font(fonts.Families[0], 14);
-            calorieSeries1.ChartType = SeriesChartType.Bar;
-            calorieSeries2.ChartType = SeriesChartType.Bar;
-            calorieSeries1.IsValueShownAsLabel = true;
-            calorieSeries2.IsValueShownAsLabel = true;
-        }
-
-        private bool checkComboBoxSelected(ComboBox c)
-        {
-            if (c.SelectedItem != null)
-            {
-                c.BackColor = Color.White;
-                return true;
-            }
-            else
-            {
-                c.BackColor = Color.LightCoral;
-                return false;
-            }
-        }
-
-        private void settingsPage_Enter(object sender, EventArgs e)
-        {
-            StartDateCombo.SelectedIndex = setting.startDate - 1;
-            Console.WriteLine(setting.height.ToString());
-            HeightText.Text = setting.height.ToString();
-            if (setting.alarm)
-            {
-                YesradioButton.Checked = true;
-                HourSetCombo.SelectedIndex = setting.alarmHour;
-                MinuteSetCombo.SelectedIndex = setting.alarmMinute;
-            }
-            else
-                NoradioButton.Checked = true;
-            setPermissionPanel();
-            foreach (Exercise ex in Exercise.exerciseList)
-            {
-                ExercisePanel ep = new ExercisePanel(this, exercisePanels.Count, settingExerciseTitleLabel.Location.X, settingExerciseTitleLabel.Location.Y + settingExerciseTitleLabel.Height + 30);
-                ep.setData(ex.title, ex.timeLength, ex.calorie, ex.detail);
-                exercisePanels.Add(ep);
-                settingPanel.Controls.Add(ep);
-                
-            }
-
-        }
-        private void settingsPage_Leave(object sender, EventArgs e)
-        {
-            for (int i = exercisePanels.Count - 1; i >= 0; --i)
-                removeExercisePanel(i);
-        }
-
-        private void addSettingExerciseButton_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("add exercise panel");
-            ExercisePanel ep = new ExercisePanel(this, exercisePanels.Count, settingExerciseTitleLabel.Location.X, settingExerciseTitleLabel.Location.Y + settingExerciseTitleLabel.Height + 30);
-            exercisePanels.Add(ep);
-            settingPanel.Controls.Add(ep);
-        }
-
-        public void removeExercisePanel(int index)
-        {
-            ExercisePanel tmp = exercisePanels[index];
-            exercisePanels.RemoveAt(index);
-            tmp.Dispose();
-            for (int i = 0; i < exercisePanels.Count; ++i)
-            {
-                exercisePanels[i].setPosition(i);
-            }
-        }
-        public void setPermissionPanel()
-        {
-            if (YesradioButton.Checked == true)
-                PermissionPanel.Visible = true;
-
-            if (NoradioButton.Checked == true)
-                PermissionPanel.Visible = false;
         }
 
         private void CheckSettingbutton_Click(object sender, EventArgs e)
         {
             bool valid = true;
-
             valid = checkTextNotEmpty(HeightText);
             valid = checkComboBoxSelected(StartDateCombo);
             valid = checkComboBoxSelected(HourSetCombo);
@@ -520,7 +429,8 @@ namespace Health_Calendar
                 setting.update();
 
                 Exercise.exerciseList.Clear();
-                for(int i = 0; i < exercisePanels.Count; ++i) {
+                for (int i = 0; i < exercisePanels.Count; ++i)
+                {
                     Exercise.exerciseList.Add(new Exercise(i + 1, exercisePanels[i].title, exercisePanels[i].detail, exercisePanels[i].timeLength, exercisePanels[i].calorie));
                 }
                 Exercise.update();
@@ -534,13 +444,25 @@ namespace Health_Calendar
             }
         }
 
-        private void MainWindow_Resize(object sender, EventArgs e)
+        private void addSettingExerciseButton_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                Hide();
-                notifyIcon.Visible = true;
-            }
+            Console.WriteLine("add exercise panel");
+            ExercisePanel ep = new ExercisePanel(this, exercisePanels.Count, settingExerciseTitleLabel.Location.X, settingExerciseTitleLabel.Location.Y + settingExerciseTitleLabel.Height + 30);
+            exercisePanels.Add(ep);
+            settingPanel.Controls.Add(ep);
+        }
+
+        /*********************************
+         * Other Controls Event Handlers *
+         *********************************/
+        private void YesradioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            setPermissionPanel();
+        }
+
+        private void NoradioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            setPermissionPanel();
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -550,11 +472,98 @@ namespace Health_Calendar
             notifyIcon.Visible = false;
         }
 
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        /*********************
+         * Panels Management *
+         *********************/
+        public void removeDietPanel(int index)
         {
-            if (MessageBox.Show("你確定要關閉健康月曆嗎?（按最小化可背景執行）", "確定要離開?", MessageBoxButtons.YesNo) == DialogResult.No)
+            DietPanel tmp = dietPanels[index];
+            dietPanels.RemoveAt(index);
+            tmp.Dispose();
+
+            for (int i = 0; i < dietPanels.Count; ++i)
             {
-                e.Cancel = true;
+                dietPanels[i].setPosition(i);
+            }
+        }
+        public void removeExercisePanel(int index)
+        {
+            ExercisePanel tmp = exercisePanels[index];
+            exercisePanels.RemoveAt(index);
+            tmp.Dispose();
+            for (int i = 0; i < exercisePanels.Count; ++i)
+            {
+                exercisePanels[i].setPosition(i);
+            }
+        }
+
+        public void setPermissionPanel()
+        {
+            if (YesradioButton.Checked == true)
+                PermissionPanel.Visible = true;
+
+            if (NoradioButton.Checked == true)
+                PermissionPanel.Visible = false;
+        }
+
+        /********************
+         * Input Validation *
+         ********************/
+        private bool checkTextNotEmpty(TextBox t)
+        {
+            if (t.Text != "")
+            {
+                t.BackColor = Color.White;
+                return true;
+            }
+            else
+            {
+                t.BackColor = Color.LightCoral;
+                return false;
+            }
+        }
+
+        private bool checkComboBoxSelected(ComboBox c)
+        {
+            if (c.SelectedItem != null)
+            {
+                c.BackColor = Color.White;
+                return true;
+            }
+            else
+            {
+                c.BackColor = Color.LightCoral;
+                return false;
+            }
+        }
+
+        /******************
+         * Other Function *
+         ******************/
+        private void generate_calendar(int year, int month)
+        {
+            int[] W = new int[12] { 6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
+            int[] D = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            int w = W[month - 1] + year + (year / 4) - (year / 100) + (year / 400);
+            int X = 25, Y = 60;
+            if (((year % 4) == 0) && (month < 3))
+            {
+                w--; D[1]++;
+                if ((year % 100) == 0)
+                {
+                    w++; D[1]--;
+                }
+                if ((year % 400) == 0)
+                {
+                    w--; D[1]++;
+                }
+            }            for (int i = 1, j = 0; i <= D[month - 1]; i++)
+            {
+                DateButton dateBtn = new DateButton(X + 90 * ((w + i) % 7), Y + 70 * j, new DateTime(year, month, i), "");
+                dateBtn.Font = new Font(fonts.Families[0], 18, System.Drawing.FontStyle.Bold);
+                dateBtn.Click += (sender, e) => DateButton_Click(sender, e, dateBtn.date);
+                calendarPage.Controls.Add(dateBtn);
+                if ((w + i) % 7 == 6) j++;
             }
         }
 
